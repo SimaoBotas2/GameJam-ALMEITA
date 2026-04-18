@@ -1,21 +1,23 @@
 [gd_scene format=3 uid="uid://cbs65jckddwbc"]
 
 [ext_resource type="Texture2D" uid="uid://dffiep3p5offh" path="res://icon.svg" id="1_qfr4l"]
+[ext_resource type="Script" path="res://scripts/interaction_object.gd" id="2_y8k3d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5s46"]
-size = Vector2(122, 124)
+size = Vector2(66, 65)
 
 [node name="Interaction_Object" type="Area2D" unique_id=1999036460]
 collision_layer = 2
 collision_mask = 0
+script = ExtResource("2_y8k3d")
 groups = ["interaction_object"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1272930995]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_j5s46")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1394849454]
-visible = true
+modulate = Color(1, 0.3, 0.3, 1)
 z_index = 5
 scale = Vector2(0.5, 0.5)
-modulate = Color(1, 0.3, 0.3, 1)
 texture = ExtResource("1_qfr4l")

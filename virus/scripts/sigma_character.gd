@@ -39,7 +39,10 @@ func pick_new_state():
 
 func handle_interaction() -> void:
 	if current_interaction_object != null and Input.is_action_just_pressed("interact"):
-		print("Placeholder: interação com ", current_interaction_object.name)
+		if current_interaction_object.has_method("interact"):
+			current_interaction_object.interact()
+		else:
+			print("Placeholder: interação com ", current_interaction_object.name)
 
 func _on_interaction_detector_area_entered(area: Area2D) -> void:
 	if area.is_in_group("interaction_object"):

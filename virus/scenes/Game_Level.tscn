@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cbs65jckddwbc" path="res://scenes/interaction_object.tscn" id="2_hgbiv"]
 
 [node name="Game_Level" type="Node2D" unique_id=708592919]
-position = Vector2(3, 0)
+position = Vector2(-2, -1)
 
 [node name="SigmaCharacter" parent="." unique_id=1253014624 instance=ExtResource("1_rhcg6")]
 position = Vector2(325, 262)

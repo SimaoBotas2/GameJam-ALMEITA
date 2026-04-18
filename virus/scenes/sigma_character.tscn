@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://ds1sddmwt3n5o"]
 
 [ext_resource type="Script" uid="uid://cdob7t48kkxjq" path="res://scripts/sigma_character.gd" id="1_cv5u6"]
-[ext_resource type="Texture2D" uid="uid://cf18x2q0t8ynv" path="res://assets/char_sprit.png" id="2_8ttva"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hrjwb"]
+load_path = "res://.godot/imported/char_sprit.png-d8558582f638d36bf6ba81e4789c8ad9.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3tlk"]
 size = Vector2(16, 18)
@@ -123,7 +125,7 @@ script = ExtResource("1_cv5u6")
 z_index = 20
 position = Vector2(-1.6715317, 35.551292)
 scale = Vector2(0.2674119, 0.3976359)
-texture = ExtResource("2_8ttva")
+texture = SubResource("CompressedTexture2D_hrjwb")
 hframes = 6
 vframes = 4
 frame = 6
@@ -157,6 +159,13 @@ tree_root = SubResource("AnimationNodeStateMachine_kpaw5")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = 0.0
 parameters/Walk/blend_position = Vector2(0.0244648, 1.02511)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2004788694]
+zoom = Vector2(2.5, 2.5)
+limit_left = 0
+limit_top = 0
+limit_right = 1150
+limit_bottom = 642
 
 [connection signal="area_entered" from="InteractionDetector" to="." method="_on_interaction_detector_area_entered"]
 [connection signal="area_exited" from="InteractionDetector" to="." method="_on_interaction_detector_area_exited"]
