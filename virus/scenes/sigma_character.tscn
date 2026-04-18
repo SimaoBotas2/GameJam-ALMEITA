@@ -8,8 +8,8 @@ load_path = "res://.godot/imported/char_sprit.png-d8558582f638d36bf6ba81e4789c8a
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3tlk"]
 size = Vector2(16, 18)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_u1k2m"]
-radius = 24.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u1k2m"]
+size = Vector2(42, 34)
 
 [sub_resource type="Animation" id="Animation_r3tlk"]
 length = 0.001
@@ -141,15 +141,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionDetector" unique_id=310511666]
-shape = SubResource("CircleShape2D_u1k2m")
-
-[node name="InteractionPrompt" type="Label" parent="." unique_id=1724164796]
-offset_left = -78.0
-offset_top = -8.0
-offset_right = 85.0
-offset_bottom = 15.0
-text = "Pressiona E para interagir"
-horizontal_alignment = 1
+shape = SubResource("RectangleShape2D_u1k2m")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=594134957]
 libraries/ = SubResource("AnimationLibrary_qg85h")
