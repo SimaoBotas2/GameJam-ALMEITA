@@ -21,7 +21,7 @@ position = Vector2(520, 275)
 modulate = Color(0.24405196, 0.24405208, 0.24405202, 1)
 z_index = -50
 texture_filter = 1
-position = Vector2(578.0001, 319)
+position = Vector2(578.00006, 326)
 scale = Vector2(5.120536, 2.892857)
 texture = ExtResource("3_hgbiv")
 
