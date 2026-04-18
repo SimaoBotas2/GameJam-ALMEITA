@@ -4,6 +4,7 @@ extends Area2D
 @export var prompt_offset: Vector2 = Vector2(0, -64)
 @export var prompt_margin: Vector2 = Vector2(12, 12)
 @export var release_chain_on_use: bool = false
+@export var used_texture: Texture2D
 @export_file("*.tscn") var next_scene_path: String = ""
 
 var was_used: bool = false
@@ -61,11 +62,18 @@ func interact() -> void:
 
 	was_used = true
 	interaction_label.visible = false
-	if audio_player != null:
+
+	var played_sound := false
+	if audio_player != null and audio_player.stream != null:
 		audio_player.play()
+		played_sound = true
 
 	if sprite != null:
-		sprite.visible = false
+		if used_texture != null:
+			sprite.texture = used_texture
+			sprite.visible = true
+		else:
+			sprite.visible = false
 
 	monitoring = false
 	monitorable = false
@@ -77,4 +85,6 @@ func interact() -> void:
 			player.release_chain()
 
 	if not next_scene_path.is_empty():
+		if played_sound:
+			await audio_player.finished
 		get_tree().change_scene_to_file(next_scene_path)

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b2jnbhwmn0jbb"]
+
+[ext_resource type="PackedScene" uid="uid://ds1sddmwt3n5o" path="res://scenes/sigma_character.tscn" id="1_rhcg6"]
+[ext_resource type="PackedScene" uid="uid://cbs65jckddwbc" path="res://scenes/caixa_vidros.tscn" id="2_hgbiv"]
+[ext_resource type="Texture2D" uid="uid://dlnw8pf5odwlp" path="res://assets/hospital_rooms/sala_inicio.png" id="3_hgbiv"]
+[ext_resource type="PackedScene" uid="uid://dt4cwxs7edfeq" path="res://scenes/door.tscn" id="4_rnwjm"]
+[ext_resource type="PackedScene" uid="uid://cnhqisvdrixic" path="res://scenes/bed.tscn" id="5_ydh6h"]
+[ext_resource type="PackedScene" uid="uid://boru4ivlll44d" path="res://scenes/collision_blocker.tscn" id="6_pbc52"]
+
+[node name="level_1" type="Node2D" unique_id=708592919]
+position = Vector2(-2, -1)
+
+[node name="SigmaCharacter" parent="." unique_id=1253014624 instance=ExtResource("1_rhcg6")]
+position = Vector2(548, 268)
+chain_anchor_offset = Vector2(-20, 101)
+
+[node name="vacina" parent="." unique_id=1999036460 instance=ExtResource("2_hgbiv")]
+position = Vector2(520, 275)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1143291219]
+modulate = Color(0.24405196, 0.24405208, 0.24405202, 1)
+z_index = -50
+texture_filter = 1
+position = Vector2(578.0001, 319)
+scale = Vector2(5.120536, 2.892857)
+texture = ExtResource("3_hgbiv")
+
+[node name="door" parent="." unique_id=793826578 instance=ExtResource("4_rnwjm")]
+position = Vector2(1118, 306)
+
+[node name="CollisionBlocker" parent="." unique_id=1822838945 instance=ExtResource("5_ydh6h")]
+position = Vector2(362, 247)
+
+[node name="CollisionBlocker2" parent="." unique_id=414700821 instance=ExtResource("6_pbc52")]
+position = Vector2(137.5, 138)
