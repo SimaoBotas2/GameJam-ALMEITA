@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cdob7t48kkxjq" path="res://scripts/sigma_character.gd" id="1_cv5u6"]
 [ext_resource type="Texture2D" uid="uid://fhjk6poj5w60" path="res://assets/dungeon-hanging-chain.png" id="2_chain"]
+[ext_resource type="AudioStream" uid="uid://d13aa81r561p0" path="res://assets/sound/footsteps_echo_rapido.wav" id="3_steps"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3tlk"]
 size = Vector2(16, 18)
@@ -207,6 +208,11 @@ limit_left = 0
 limit_top = 0
 limit_right = 1150
 limit_bottom = 642
+
+[node name="FootstepsPlayer" type="AudioStreamPlayer" parent="." unique_id=761234551]
+stream = ExtResource("3_steps")
+volume_db = 4.0
+pitch_scale = 1.05
 
 [connection signal="area_entered" from="InteractionDetector" to="." method="_on_interaction_detector_area_entered"]
 [connection signal="area_exited" from="InteractionDetector" to="." method="_on_interaction_detector_area_exited"]

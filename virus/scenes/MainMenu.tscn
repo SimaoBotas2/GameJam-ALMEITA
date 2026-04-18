@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://drmwi8w1qhrls" path="res://assets/options_button-removebg-preview.png" id="4_ow34m"]
 [ext_resource type="Texture2D" uid="uid://cekpkjmpg7rat" path="res://assets/popup_bg.png" id="5_l72w3"]
 [ext_resource type="FontFile" uid="uid://d04hn813ag8vk" path="res://assets/Klystron_sans-Regular.ttf" id="6_826wr"]
+[ext_resource type="AudioStream" uid="uid://b7f0sd7kt5h3c" path="res://assets/menu music.wav" id="7_ucygd"]
+[ext_resource type="AudioStream" uid="uid://bpt0ra2v73n0l" path="res://assets/click.wav" id="8_mipys"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2wh52"]
 atlas = ExtResource("2_0ykhv")
@@ -122,6 +124,13 @@ theme_override_fonts/font = ExtResource("6_826wr")
 theme_override_font_sizes/font_size = 56
 text = "X"
 flat = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=932067735]
+stream = ExtResource("7_ucygd")
+autoplay = true
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=158359039]
+stream = ExtResource("8_mipys")
 
 [connection signal="pressed" from="TextureButton_Play" to="." method="_on_texture_button_play_pressed"]
 [connection signal="pressed" from="TextureButton_Options" to="." method="_on_texture_button_options_pressed"]
