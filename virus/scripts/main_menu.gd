@@ -9,6 +9,7 @@ extends Control
 var cursor_sprite = preload("res://assets/seringe_cur.png")
 
 func _ready() -> void:
+	$AudioStreamPlayer.play(0.9)
 	# Só tenta esconder se o nó realmente existir para evitar crashes
 	if options_popup != null:
 		options_popup.hide()
@@ -18,13 +19,22 @@ func _ready() -> void:
 
 func _on_texture_button_play_pressed():
 	# Nome do ficheiro corrigido de acordo com a tua pasta scenes
+	$SFXPlayer.play(0.2)
+	await get_tree().create_timer(0.23).timeout
+	$SFXPlayer.stop()
 	get_tree().change_scene_to_file("res://scenes/level_1.tscn")
 	
 func _on_texture_button_options_pressed():
 	if options_popup != null:
+		$SFXPlayer.play(0.2)
+		await get_tree().create_timer(0.23).timeout
+		$SFXPlayer.stop()
 		options_popup.show()
 		options_button.hide()
 
 
 func _on_button_pressed() -> void:
+	$SFXPlayer.play(0.2)
+	await get_tree().create_timer(0.23).timeout
+	$SFXPlayer.stop()
 	options_popup.hide()
