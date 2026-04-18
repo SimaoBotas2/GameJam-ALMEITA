@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://cys6e73wl0877"]
 
-[ext_resource type="Script" uid="uid://cwcujaxh2c0qc" path="res://scenes/main_menu.gd" id="1_2wh52"]
+[ext_resource type="Script" uid="uid://cwcujaxh2c0qc" path="res://scripts/main_menu.gd" id="1_2wh52"]
 [ext_resource type="Texture2D" uid="uid://7mt3j4fyaul5" path="res://assets/bg.png" id="1_yqorp"]
 [ext_resource type="Texture2D" uid="uid://bd2psc5otsdbb" path="res://assets/play_button-removebg-preview.png" id="2_0ykhv"]
+[ext_resource type="Texture2D" uid="uid://drmwi8w1qhrls" path="res://assets/options_button-removebg-preview.png" id="4_ow34m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2wh52"]
 atlas = ExtResource("2_0ykhv")
@@ -15,6 +16,18 @@ region = Rect2(663.65, 55.122, 257, 165)
 [sub_resource type="AtlasTexture" id="AtlasTexture_l72w3"]
 atlas = ExtResource("2_0ykhv")
 region = Rect2(373.33002, 57.134, 255.09998, 165)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_826wr"]
+atlas = ExtResource("4_ow34m")
+region = Rect2(51.71, 17.89, 315.5, 190.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucygd"]
+atlas = ExtResource("4_ow34m")
+region = Rect2(766.5, 18, 317, 189)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mipys"]
+atlas = ExtResource("4_ow34m")
+region = Rect2(408.5, 19, 317, 189)
 
 [node name="MainMenu" type="Control" unique_id=1376189670]
 layout_mode = 3
@@ -50,5 +63,14 @@ texture_hover = SubResource("AtlasTexture_l72w3")
 
 [node name="TextureButton_Options" type="TextureButton" parent="." unique_id=1345205238]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 280.0
+offset_top = 220.0
+offset_right = 595.0
+offset_bottom = 410.0
+scale = Vector2(0.25, 0.25)
+texture_normal = SubResource("AtlasTexture_826wr")
+texture_pressed = SubResource("AtlasTexture_ucygd")
+texture_hover = SubResource("AtlasTexture_mipys")
+
+[connection signal="pressed" from="TextureButton_Play" to="." method="_on_texture_button_play_pressed"]
+[connection signal="pressed" from="TextureButton_Options" to="." method="_on_texture_button_options_pressed"]
