@@ -6,6 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3tlk"]
 size = Vector2(16, 18)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_u1k2m"]
+radius = 24.0
+
 [sub_resource type="Animation" id="Animation_r3tlk"]
 length = 0.001
 tracks/0/type = "value"
@@ -117,6 +120,7 @@ position = Vector2(584, 352)
 script = ExtResource("1_cv5u6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1457838486]
+z_index = 20
 position = Vector2(-1.6715317, 35.551292)
 scale = Vector2(0.2674119, 0.3976359)
 texture = ExtResource("2_8ttva")
@@ -128,6 +132,23 @@ frame = 6
 position = Vector2(-3, 51)
 shape = SubResource("RectangleShape2D_r3tlk")
 
+[node name="InteractionDetector" type="Area2D" parent="." unique_id=784477503]
+position = Vector2(-2, 42)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionDetector" unique_id=310511666]
+shape = SubResource("CircleShape2D_u1k2m")
+
+[node name="InteractionPrompt" type="Label" parent="." unique_id=1724164796]
+offset_left = -78.0
+offset_top = -8.0
+offset_right = 85.0
+offset_bottom = 15.0
+text = "Pressiona E para interagir"
+horizontal_alignment = 1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=594134957]
 libraries/ = SubResource("AnimationLibrary_qg85h")
 
@@ -136,3 +157,6 @@ tree_root = SubResource("AnimationNodeStateMachine_kpaw5")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = 0.0
 parameters/Walk/blend_position = Vector2(0.0244648, 1.02511)
+
+[connection signal="area_entered" from="InteractionDetector" to="." method="_on_interaction_detector_area_entered"]
+[connection signal="area_exited" from="InteractionDetector" to="." method="_on_interaction_detector_area_exited"]
