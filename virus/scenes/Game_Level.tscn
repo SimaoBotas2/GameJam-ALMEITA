@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dppjtmjlsj67d"]
+
+[ext_resource type="PackedScene" uid="uid://ds1sddmwt3n5o" path="res://scenes/sigma_character.tscn" id="1_rhcg6"]
+[ext_resource type="PackedScene" uid="uid://cbs65jckddwbc" path="res://scenes/interaction_object.tscn" id="2_hgbiv"]
+
+[node name="Game_Level" type="Node2D" unique_id=708592919]
+
+[node name="SigmaCharacter" parent="." unique_id=1253014624 instance=ExtResource("1_rhcg6")]
+position = Vector2(384, 268)
+
+[node name="Interaction_Object" parent="." unique_id=1999036460 instance=ExtResource("2_hgbiv")]
+position = Vector2(510, 262)
