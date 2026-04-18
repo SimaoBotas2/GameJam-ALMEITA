@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cys6e73wl0877"]
+
+[ext_resource type="Texture2D" uid="uid://7mt3j4fyaul5" path="res://assets/bg.png" id="1_yqorp"]
+
+[node name="MainMenu" type="Control" unique_id=1376189670]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1016525050]
+clip_contents = true
+layout_mode = 0
+offset_left = -61.0
+offset_right = 2691.0
+offset_bottom = 1536.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_yqorp")
+
+[node name="TextureButton_Play" type="TextureButton" parent="." unique_id=1319780502]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureButton_Options" type="TextureButton" parent="." unique_id=1345205238]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
