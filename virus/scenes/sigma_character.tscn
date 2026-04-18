@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://ds1sddmwt3n5o"]
 
 [ext_resource type="Script" uid="uid://cdob7t48kkxjq" path="res://scripts/sigma_character.gd" id="1_cv5u6"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hrjwb"]
-load_path = "res://.godot/imported/char_sprit.png-d8558582f638d36bf6ba81e4789c8ad9.ctex"
+[ext_resource type="Texture2D" uid="uid://fhjk6poj5w60" path="res://assets/dungeon-hanging-chain.png" id="2_chain"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3tlk"]
 size = Vector2(16, 18)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hrjwb"]
+load_path = "res://.godot/imported/sih_idle.png-e72999ffb2353ccf560c16c63009262d.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u1k2m"]
 size = Vector2(42, 34)
@@ -16,37 +17,64 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("CollisionShape2D/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [6]
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_hrjwb")]
 }
 
 [sub_resource type="Animation" id="Animation_qg85h"]
 resource_name = "idle_animation"
-length = 4.3
+length = 0.8
 loop_mode = 1
-step = 0.5
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("CollisionShape2D/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 0, 1, 0, 1, 2, 3]
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_hrjwb")]
 }
 
 [sub_resource type="Animation" id="Animation_1401l"]
 resource_name = "test_animation"
 step = 0.5
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_walk"]
+load_path = "res://.godot/imported/sih_walking.png-b1639551a8aa27205f52b2f06f053493.ctex"
 
 [sub_resource type="Animation" id="Animation_cv5u6"]
 resource_name = "walk_right"
@@ -55,14 +83,26 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("CollisionShape2D/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [6, 7, 9, 8]
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_walk")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qg85h"]
@@ -118,21 +158,30 @@ states/Walk/position = Vector2(164, 113)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_cv5u6")]
 
 [node name="SigmaCharacter" type="CharacterBody2D" unique_id=1253014624]
-position = Vector2(584, 352)
+position = Vector2(691, 356)
+scale = Vector2(3, 3)
 script = ExtResource("1_cv5u6")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1457838486]
-z_index = 20
-position = Vector2(-1.6715317, 35.551292)
-scale = Vector2(0.2674119, 0.3976359)
-texture = SubResource("CompressedTexture2D_hrjwb")
-hframes = 6
-vframes = 4
-frame = 6
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=864114939]
-position = Vector2(-3, 51)
+position = Vector2(-3, 42)
 shape = SubResource("RectangleShape2D_r3tlk")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=1457838486]
+modulate = Color(0.5513578, 0.55135787, 0.5513578, 1)
+show_behind_parent = true
+z_index = 20
+texture_filter = 1
+position = Vector2(2, -18)
+scale = Vector2(1, 1.491)
+texture = SubResource("CompressedTexture2D_hrjwb")
+hframes = 4
+
+[node name="ChainSprite" type="Sprite2D" parent="." unique_id=176989784]
+show_behind_parent = true
+z_index = 10
+texture_filter = 1
+scale = Vector2(0.35, 0.08)
+texture = ExtResource("2_chain")
 
 [node name="InteractionDetector" type="Area2D" parent="." unique_id=784477503]
 position = Vector2(-2, 42)
@@ -153,7 +202,7 @@ parameters/Idle/blend_position = 0.0
 parameters/Walk/blend_position = Vector2(0.0244648, 1.02511)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2004788694]
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(0.75, 0.75)
 limit_left = 0
 limit_top = 0
 limit_right = 1150

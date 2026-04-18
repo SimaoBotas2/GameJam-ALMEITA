@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dt4cwxs7edfeq"]
+
+[ext_resource type="AudioStream" uid="uid://ks5kyv44uqlx" path="res://assets/sound/door-metal-opening.wav" id="2_uvdjg"]
+[ext_resource type="Script" uid="uid://ctb7fv7wvnc4e" path="res://scripts/interaction_object.gd" id="2_y8k3d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5s46"]
+size = Vector2(66, 182)
+
+[node name="Interaction_Object" type="Area2D" unique_id=1999036460]
+z_index = 50
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("2_y8k3d")
+next_scene_path = "res://scenes/level_2.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1272930995]
+position = Vector2(0, 58)
+shape = SubResource("RectangleShape2D_j5s46")
+
+[node name="InteractionLabel" type="Label" parent="." unique_id=1645445898]
+visible = false
+z_index = 1000
+z_as_relative = false
+offset_left = -63.0
+offset_top = -52.0
+offset_right = 67.0
+offset_bottom = -29.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+text = "Press E to interact"
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="InteractionLabel" unique_id=1133064883]
+stream = ExtResource("2_uvdjg")
+volume_db = 24.0
