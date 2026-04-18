@@ -24,3 +24,7 @@ func _on_texture_button_options_pressed():
 	if options_popup != null:
 		options_popup.show()
 		options_button.hide()
+
+
+func _on_button_pressed() -> void:
+	options_popup.hide()

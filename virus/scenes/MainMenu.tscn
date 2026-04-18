@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://7mt3j4fyaul5" path="res://assets/bg.png" id="1_yqorp"]
 [ext_resource type="Texture2D" uid="uid://bd2psc5otsdbb" path="res://assets/play_button-removebg-preview.png" id="2_0ykhv"]
 [ext_resource type="Texture2D" uid="uid://drmwi8w1qhrls" path="res://assets/options_button-removebg-preview.png" id="4_ow34m"]
+[ext_resource type="Texture2D" uid="uid://cekpkjmpg7rat" path="res://assets/popup_bg.png" id="5_l72w3"]
+[ext_resource type="FontFile" uid="uid://d04hn813ag8vk" path="res://assets/Klystron_sans-Regular.ttf" id="6_826wr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2wh52"]
 atlas = ExtResource("2_0ykhv")
@@ -72,5 +74,55 @@ texture_normal = SubResource("AtlasTexture_826wr")
 texture_pressed = SubResource("AtlasTexture_ucygd")
 texture_hover = SubResource("AtlasTexture_mipys")
 
+[node name="OptionsPopup" type="ColorRect" parent="." unique_id=892902426]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="MenuBackground" type="TextureRect" parent="OptionsPopup" unique_id=634184500]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = -111.00001
+offset_right = 435.0
+offset_bottom = 262.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_l72w3")
+
+[node name="Label" type="Label" parent="OptionsPopup/MenuBackground" unique_id=603932530]
+layout_mode = 0
+offset_left = 195.5
+offset_top = 142.5
+offset_right = 471.5
+offset_bottom = 235.5
+theme_override_fonts/font = ExtResource("6_826wr")
+theme_override_font_sizes/font_size = 32
+text = "There will be plenty 
+of options for you to
+choose from later"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="OptionsPopup/MenuBackground" unique_id=493221408]
+layout_mode = 0
+offset_left = 524.5
+offset_top = 61.5
+offset_right = 553.5
+offset_bottom = 119.5
+theme_override_fonts/font = ExtResource("6_826wr")
+theme_override_font_sizes/font_size = 56
+text = "X"
+flat = true
+
 [connection signal="pressed" from="TextureButton_Play" to="." method="_on_texture_button_play_pressed"]
 [connection signal="pressed" from="TextureButton_Options" to="." method="_on_texture_button_options_pressed"]
+[connection signal="pressed" from="OptionsPopup/MenuBackground/Button" to="." method="_on_button_pressed"]
