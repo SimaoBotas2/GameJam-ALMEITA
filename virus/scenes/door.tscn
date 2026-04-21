@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dt4cwxs7edfeq"]
+[gd_scene format=3 uid="uid://bugwtywh04ioj"]
 
 [ext_resource type="AudioStream" uid="uid://ks5kyv44uqlx" path="res://assets/sound/door-metal-opening.wav" id="2_uvdjg"]
 [ext_resource type="Script" uid="uid://ctb7fv7wvnc4e" path="res://scripts/interaction_object.gd" id="2_y8k3d"]

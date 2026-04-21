@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://blaapud1tu2w"]
+[gd_scene format=3 uid="uid://ds1sddmwt3n5o"]
 
 [ext_resource type="Script" uid="uid://cdob7t48kkxjq" path="res://scripts/sigma_character.gd" id="1_cv5u6"]
 [ext_resource type="Texture2D" uid="uid://fhjk6poj5w60" path="res://assets/dungeon-hanging-chain.png" id="2_chain"]

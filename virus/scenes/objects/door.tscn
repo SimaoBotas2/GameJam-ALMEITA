@@ -1,30 +1,21 @@
-[gd_scene format=3 uid="uid://dnnwnlvps78a2"]
+[gd_scene format=3 uid="uid://dt4cwxs7edfeq"]
 
-[ext_resource type="Texture2D" uid="uid://d0ykamqhn3581" path="res://assets/caixa_vidros.png" id="2_w0dt6"]
+[ext_resource type="AudioStream" uid="uid://ks5kyv44uqlx" path="res://assets/sound/door-metal-opening.wav" id="2_uvdjg"]
 [ext_resource type="Script" uid="uid://ctb7fv7wvnc4e" path="res://scripts/interaction_object.gd" id="2_y8k3d"]
-[ext_resource type="Texture2D" uid="uid://ct1r1u4vut3wl" path="res://assets/caixa_vidros_sangue.png" id="3_blood"]
-[ext_resource type="AudioStream" uid="uid://d3uchu2forl31" path="res://assets/sound/Syringe sound.wav" id="3_8qblo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5s46"]
-size = Vector2(66, 65)
+size = Vector2(66, 182)
 
 [node name="Interaction_Object" type="Area2D" unique_id=1999036460]
 z_index = 50
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("2_y8k3d")
-release_chain_on_use = true
-used_texture = ExtResource("3_blood")
+next_scene_path = "res://scenes/level_2.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1272930995]
-position = Vector2(0, -0.5)
+position = Vector2(0, 58)
 shape = SubResource("RectangleShape2D_j5s46")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1394849454]
-modulate = Color(0.45995867, 0.45995867, 0.4599586, 1)
-z_index = 5
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_w0dt6")
 
 [node name="InteractionLabel" type="Label" parent="." unique_id=1645445898]
 visible = false
@@ -41,5 +32,5 @@ text = "Press E to interact"
 horizontal_alignment = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="InteractionLabel" unique_id=1133064883]
-stream = ExtResource("3_8qblo")
+stream = ExtResource("2_uvdjg")
 volume_db = 24.0

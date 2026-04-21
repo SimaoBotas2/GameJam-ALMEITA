@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dnnwnlvps78a2"]
+[gd_scene format=3 uid="uid://cbs65jckddwbc"]
 
 [ext_resource type="Texture2D" uid="uid://d0ykamqhn3581" path="res://assets/caixa_vidros.png" id="2_w0dt6"]
 [ext_resource type="Script" uid="uid://ctb7fv7wvnc4e" path="res://scripts/interaction_object.gd" id="2_y8k3d"]
