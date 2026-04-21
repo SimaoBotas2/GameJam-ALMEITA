@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cekpkjmpg7rat"
-path="res://.godot/imported/popup_bg.png-1bd2fe7515a219a0c136ffd9265995bf.ctex"
+uid="uid://d2y76kuxe2hwu"
+path="res://.godot/imported/seringa_big.png-56a48f6fbdde22987364825b3c6f516e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/popup_bg.png"
-dest_files=["res://.godot/imported/popup_bg.png-1bd2fe7515a219a0c136ffd9265995bf.ctex"]
+source_file="res://assets/objects/seringa_big.png"
+dest_files=["res://.godot/imported/seringa_big.png-56a48f6fbdde22987364825b3c6f516e.ctex"]
 
 [params]
 

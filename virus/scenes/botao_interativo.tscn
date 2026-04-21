@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
-[ext_resource type="Texture2D" path="res://assets/play_button-removebg-preview.png" id="1_button"]
-[ext_resource type="Script" path="res://scripts/interaction_object.gd" id="2_script"]
+[ext_resource type="Texture2D" path="res://assets/menu/play_button-removebg-preview.png" id="1_button"]
+[ext_resource type="Script" uid="uid://ceq6r8t0v2w5y" path="res://scripts/botao.gd" id="2_script"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_button"]
 size = Vector2(120, 64)

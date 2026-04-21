@@ -21,6 +21,7 @@ var interaction_locked: bool = false
 @onready var footsteps_player: AudioStreamPlayer = $FootstepsPlayer
 
 func _ready():
+	z_index = 1
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	add_to_group("player")
 	animation_tree.active = true

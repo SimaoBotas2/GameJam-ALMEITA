@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vynuu2reurqo"
-path="res://.godot/imported/sala_serra.png-cb625a638acd83828d216010d1724ec7.ctex"
+uid="uid://drmwi8w1qhrls"
+path="res://.godot/imported/options_button-removebg-preview.png-bd60e333b791bb504123b16aeb7900a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sala_serra.png"
-dest_files=["res://.godot/imported/sala_serra.png-cb625a638acd83828d216010d1724ec7.ctex"]
+source_file="res://assets/menu/options_button-removebg-preview.png"
+dest_files=["res://.godot/imported/options_button-removebg-preview.png-bd60e333b791bb504123b16aeb7900a9.ctex"]
 
 [params]
 

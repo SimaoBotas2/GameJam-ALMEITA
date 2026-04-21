@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drmwi8w1qhrls"
-path="res://.godot/imported/options_button-removebg-preview.png-6cd60a3df2056bccc1516c2f2e4559ad.ctex"
+uid="uid://fhjk6poj5w60"
+path="res://.godot/imported/dungeon-hanging-chain.png-0985baf8d11bbbdcef8a895bb706d3db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/options_button-removebg-preview.png"
-dest_files=["res://.godot/imported/options_button-removebg-preview.png-6cd60a3df2056bccc1516c2f2e4559ad.ctex"]
+source_file="res://assets/char/dungeon-hanging-chain.png"
+dest_files=["res://.godot/imported/dungeon-hanging-chain.png-0985baf8d11bbbdcef8a895bb706d3db.ctex"]
 
 [params]
 

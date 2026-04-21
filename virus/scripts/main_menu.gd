@@ -6,7 +6,7 @@ extends Control
 @onready var options_popup = $OptionsPopup 
 
 # Substitui o que está entre aspas pelo "Copy Path" da tua imagem real
-var cursor_sprite = preload("res://assets/seringe_cur.png")
+var cursor_sprite = preload("res://assets/menu/seringe_cur.png")
 
 func _ready() -> void:
 	$AudioStreamPlayer.play(0.9)
@@ -22,7 +22,7 @@ func _on_texture_button_play_pressed():
 	$SFXPlayer.play(0.2)
 	await get_tree().create_timer(0.23).timeout
 	$SFXPlayer.stop()
-	get_tree().change_scene_to_file("res://scenes/level_1.tscn")
+	get_tree().change_scene_to_file("res://scenes/levels/level_1.tscn")
 	
 func _on_texture_button_options_pressed():
 	if options_popup != null:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7yvamgfrweci"
-path="res://.godot/imported/stand_after_glass.png-59c0a0bce7e2e26d48f9b9bd158681db.ctex"
+uid="uid://bd2psc5otsdbb"
+path="res://.godot/imported/play_button-removebg-preview.png-bd2b58567e40cb3365c12fb562b53392.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/stand_after_glass.png"
-dest_files=["res://.godot/imported/stand_after_glass.png-59c0a0bce7e2e26d48f9b9bd158681db.ctex"]
+source_file="res://assets/menu/play_button-removebg-preview.png"
+dest_files=["res://.godot/imported/play_button-removebg-preview.png-bd2b58567e40cb3365c12fb562b53392.ctex"]
 
 [params]
 

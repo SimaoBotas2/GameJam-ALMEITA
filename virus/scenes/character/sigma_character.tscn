@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ds1sddmwt3n5o"]
 
 [ext_resource type="Script" uid="uid://cdob7t48kkxjq" path="res://scripts/sigma_character.gd" id="1_cv5u6"]
-[ext_resource type="Texture2D" uid="uid://fhjk6poj5w60" path="res://assets/dungeon-hanging-chain.png" id="2_chain"]
+[ext_resource type="Texture2D" uid="uid://fhjk6poj5w60" path="res://assets/char/dungeon-hanging-chain.png" id="2_chain"]
 [ext_resource type="AudioStream" uid="uid://d13aa81r561p0" path="res://assets/sound/footsteps_echo_rapido.wav" id="3_steps"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3tlk"]

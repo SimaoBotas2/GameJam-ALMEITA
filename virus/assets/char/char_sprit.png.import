@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7ovawxq2ukis"
-path="res://.godot/imported/sala_serra_porta_aberta.png-0a6ac0db87fdd22d68a9add9b5e0b176.ctex"
+uid="uid://cf18x2q0t8ynv"
+path="res://.godot/imported/char_sprit.png-efd0ba0978b78561d172be923e37f4ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sala_serra_porta_aberta.png"
-dest_files=["res://.godot/imported/sala_serra_porta_aberta.png-0a6ac0db87fdd22d68a9add9b5e0b176.ctex"]
+source_file="res://assets/char/char_sprit.png"
+dest_files=["res://.godot/imported/char_sprit.png-efd0ba0978b78561d172be923e37f4ac.ctex"]
 
 [params]
 

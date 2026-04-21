@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dn7dd2hvm55ot"
-path="res://.godot/imported/seringa_small.png-f6d3f85491add9562be769beeaeaa3c2.ctex"
+path="res://.godot/imported/seringa_small.png-dcf65efd9aa4745208d51deeb160d26d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/seringa_small.png"
-dest_files=["res://.godot/imported/seringa_small.png-f6d3f85491add9562be769beeaeaa3c2.ctex"]
+source_file="res://assets/objects/seringa_small.png"
+dest_files=["res://.godot/imported/seringa_small.png-dcf65efd9aa4745208d51deeb160d26d.ctex"]
 
 [params]
 

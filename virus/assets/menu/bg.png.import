@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d83fc5vb6op5"
-path="res://.godot/imported/sih.png-caca56f40b8e11559b75a1787d3f17a5.ctex"
+uid="uid://7mt3j4fyaul5"
+path="res://.godot/imported/bg.png-3c821d968cf7f9ea67d789bcb58a5c6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sih.png"
-dest_files=["res://.godot/imported/sih.png-caca56f40b8e11559b75a1787d3f17a5.ctex"]
+source_file="res://assets/menu/bg.png"
+dest_files=["res://.godot/imported/bg.png-3c821d968cf7f9ea67d789bcb58a5c6f.ctex"]
 
 [params]
 

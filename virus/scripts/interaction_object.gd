@@ -1,19 +1,14 @@
 extends Area2D
 
-@export_multiline var interaction_message: String = "Placeholder: interaction completed!"
 @export var prompt_offset: Vector2 = Vector2(0, -64)
 @export var prompt_margin: Vector2 = Vector2(12, 12)
-@export var release_chain_on_use: bool = false
-@export var used_texture: Texture2D
-@export_file("*.tscn") var next_scene_path: String = ""
 
 var was_used: bool = false
 
-@onready var sprite: Sprite2D = get_node_or_null("Sprite2D")
 @onready var interaction_label: Label = $InteractionLabel
-@onready var audio_player: AudioStreamPlayer2D = get_node_or_null("InteractionLabel/AudioStreamPlayer2D")
 
 func _ready() -> void:
+	z_index = 0
 	add_to_group("interaction_object")
 	interaction_label.visible = false
 	interaction_label.top_level = true
@@ -62,29 +57,11 @@ func interact() -> void:
 
 	was_used = true
 	interaction_label.visible = false
-
-	var played_sound := false
-	if audio_player != null and audio_player.stream != null:
-		audio_player.play()
-		played_sound = true
-
-	if sprite != null:
-		if used_texture != null:
-			sprite.texture = used_texture
-			sprite.visible = true
-		else:
-			sprite.visible = false
-
 	monitoring = false
 	monitorable = false
 	collision_layer = 0
 
-	if release_chain_on_use:
-		var player = get_tree().get_first_node_in_group("player")
-		if player != null and player.has_method("release_chain"):
-			player.release_chain()
+	_on_interact()
 
-	if not next_scene_path.is_empty():
-		if played_sound:
-			await audio_player.finished
-		get_tree().change_scene_to_file(next_scene_path)
+func _on_interact() -> void:
+	pass

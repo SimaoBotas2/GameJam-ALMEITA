@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cbs65jckddwbc"]
 
 [ext_resource type="Texture2D" uid="uid://d0ykamqhn3581" path="res://assets/caixa_vidros.png" id="2_w0dt6"]
-[ext_resource type="Script" uid="uid://ctb7fv7wvnc4e" path="res://scripts/interaction_object.gd" id="2_y8k3d"]
+[ext_resource type="Script" uid="uid://cbn4p6r8s0t3w" path="res://scripts/caixa_vidros.gd" id="2_y8k3d"]
 [ext_resource type="Texture2D" uid="uid://ct1r1u4vut3wl" path="res://assets/caixa_vidros_sangue.png" id="3_blood"]
 [ext_resource type="AudioStream" uid="uid://d3uchu2forl31" path="res://assets/sound/Syringe sound.wav" id="3_8qblo"]
 

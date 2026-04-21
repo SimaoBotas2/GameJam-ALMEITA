@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fhjk6poj5w60"
-path="res://.godot/imported/dungeon-hanging-chain.png-ce82e3ee8c5913dc345cd0e8c034b772.ctex"
+uid="uid://7ovawxq2ukis"
+path="res://.godot/imported/sala_serra_porta_aberta.png-b692198b25fe4bf5ecbe5ea25fb602da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dungeon-hanging-chain.png"
-dest_files=["res://.godot/imported/dungeon-hanging-chain.png-ce82e3ee8c5913dc345cd0e8c034b772.ctex"]
+source_file="res://assets/hospital_rooms/sala_serra_porta_aberta.png"
+dest_files=["res://.godot/imported/sala_serra_porta_aberta.png-b692198b25fe4bf5ecbe5ea25fb602da.ctex"]
 
 [params]
 

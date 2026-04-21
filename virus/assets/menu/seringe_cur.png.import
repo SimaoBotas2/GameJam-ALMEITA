@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd2psc5otsdbb"
-path="res://.godot/imported/play_button-removebg-preview.png-1cfa6c19a15df138f626733b80630d1e.ctex"
+uid="uid://bjfwb6ln77j1x"
+path="res://.godot/imported/seringe_cur.png-010dce41276dc4b487aad6551f369d9d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/play_button-removebg-preview.png"
-dest_files=["res://.godot/imported/play_button-removebg-preview.png-1cfa6c19a15df138f626733b80630d1e.ctex"]
+source_file="res://assets/menu/seringe_cur.png"
+dest_files=["res://.godot/imported/seringe_cur.png-010dce41276dc4b487aad6551f369d9d.ctex"]
 
 [params]
 

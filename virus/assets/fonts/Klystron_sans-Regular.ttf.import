@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://d04hn813ag8vk"
-path="res://.godot/imported/Klystron_sans-Regular.ttf-63d3ecb7099086b8f6ff7818b7b7fdee.fontdata"
+path="res://.godot/imported/Klystron_sans-Regular.ttf-5d868bd4f134435b571d39f79cec7157.fontdata"
 
 [deps]
 
-source_file="res://assets/Klystron_sans-Regular.ttf"
-dest_files=["res://.godot/imported/Klystron_sans-Regular.ttf-63d3ecb7099086b8f6ff7818b7b7fdee.fontdata"]
+source_file="res://assets/fonts/Klystron_sans-Regular.ttf"
+dest_files=["res://.godot/imported/Klystron_sans-Regular.ttf-5d868bd4f134435b571d39f79cec7157.fontdata"]
 
 [params]
 

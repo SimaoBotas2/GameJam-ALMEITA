@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjfwb6ln77j1x"
-path="res://.godot/imported/seringe_cur.png-000cc44324a80464a92ae9140fb6bdff.ctex"
+uid="uid://c7yvamgfrweci"
+path="res://.godot/imported/stand_after_glass.png-a6ce8201a551bab232b97e3e267e35da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/seringe_cur.png"
-dest_files=["res://.godot/imported/seringe_cur.png-000cc44324a80464a92ae9140fb6bdff.ctex"]
+source_file="res://assets/char/stand_after_glass.png"
+dest_files=["res://.godot/imported/stand_after_glass.png-a6ce8201a551bab232b97e3e267e35da.ctex"]
 
 [params]
 
