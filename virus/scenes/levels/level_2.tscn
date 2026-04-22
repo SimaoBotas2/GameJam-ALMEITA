@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://dadkpypmkbn6r"]
 
-[ext_resource type="PackedScene" uid="uid://ds1sddmwt3n5o" path="res://scenes/character/sigma_character.tscn" id="1_3bmlt"]
+[ext_resource type="PackedScene" uid="uid://ds1sddmwt3n5o" path="res://scenes/character/sigma_character1.tscn" id="1_3bmlt"]
 [ext_resource type="Texture2D" uid="uid://vynuu2reurqo" path="res://assets/hospital_rooms/sala_serra.png" id="1_b4j7a"]
-[ext_resource type="Script" path="res://scripts/objects/sprite_2d.gd" id="2_wo48x"]
+[ext_resource type="Script" uid="uid://ccp7l5d5jb8u5" path="res://scripts/objects/sprite_2d.gd" id="2_wo48x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blocker"]
+size = Vector2(56, 631)
 
 [node name="level_2_1" type="Node2D" unique_id=1270939202]
 
@@ -18,7 +21,7 @@ script = ExtResource("2_wo48x")
 position = Vector2(138, 308)
 
 [node name="CollisionBlocker" type="StaticBody2D" parent="." unique_id=118601839]
-position = Vector2(198, 153)
 
-[node name="CollisionBlocker2" type="StaticBody2D" parent="." unique_id=327865981]
-position = Vector2(205, 664)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBlocker" unique_id=118360166]
+position = Vector2(8, 339.5)
+shape = SubResource("RectangleShape2D_blocker")
