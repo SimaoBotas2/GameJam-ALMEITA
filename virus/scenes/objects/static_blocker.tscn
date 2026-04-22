@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dxk3m5p7rar2v"]
 
-[ext_resource type="Script" uid="uid://cbk3m5p7q9r2v" path="res://scripts/static_blocker.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://cbk3m5p7q9r2v" path="res://scripts/objects/static_blocker.gd" id="1_script"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_base"]
 size = Vector2(100, 100)

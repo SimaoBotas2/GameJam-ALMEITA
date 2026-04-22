@@ -1,4 +1,4 @@
-extends "res://scripts/interaction_object.gd"
+extends "res://scripts/objects/interaction_object.gd"
 
 @onready var audio_player: AudioStreamPlayer2D = get_node_or_null("InteractionLabel/AudioStreamPlayer2D")
 

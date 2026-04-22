@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ds1sddmwt3n5o" path="res://scenes/character/sigma_character.tscn" id="1_3bmlt"]
 [ext_resource type="Texture2D" uid="uid://vynuu2reurqo" path="res://assets/hospital_rooms/sala_serra.png" id="1_b4j7a"]
-[ext_resource type="Script" path="res://scripts/sprite_2d.gd" id="2_wo48x"]
+[ext_resource type="Script" path="res://scripts/objects/sprite_2d.gd" id="2_wo48x"]
 
 [node name="level_2_1" type="Node2D" unique_id=1270939202]
 
