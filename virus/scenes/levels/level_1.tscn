@@ -6,8 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://dlnw8pf5odwlp" path="res://assets/hospital_rooms/sala_inicio.png" id="3_hgbiv"]
 [ext_resource type="PackedScene" uid="uid://dt4cwxs7edfeq" path="res://scenes/objects/door.tscn" id="4_rnwjm"]
 [ext_resource type="PackedScene" uid="uid://cnhqisvdrixic" path="res://scenes/objects/bed.tscn" id="5_ydh6h"]
-[ext_resource type="PackedScene" uid="uid://boru4ivlll44d" path="res://scenes/objects/collision_blocker.tscn" id="6_pbc52"]
-[ext_resource type="PackedScene" uid="uid://d0fpao7f5781w" path="res://scenes/wall.tscn" id="8_s8va5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blocker"]
+size = Vector2(1152, 259)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sk5k4"]
+size = Vector2(26, 633)
 
 [node name="level_1" type="Node2D" unique_id=708592919]
 position = Vector2(-2, -1)
@@ -30,20 +34,40 @@ position = Vector2(1118, 306)
 [node name="bed" parent="." unique_id=1822838945 instance=ExtResource("5_ydh6h")]
 position = Vector2(366, 274)
 
-[node name="wall" parent="." unique_id=118601839 instance=ExtResource("6_pbc52")]
+[node name="wall" type="StaticBody2D" parent="." unique_id=118601839]
 position = Vector2(156, 93)
 
-[node name="wall2" parent="." unique_id=60643796 instance=ExtResource("6_pbc52")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall" unique_id=118360166]
+position = Vector2(434, 9)
+shape = SubResource("RectangleShape2D_blocker")
+
+[node name="wall2" type="StaticBody2D" parent="." unique_id=60643796]
 position = Vector2(164, 793)
 
-[node name="CollisionBlocker" parent="." unique_id=289794416 instance=ExtResource("8_s8va5")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2" unique_id=400680195]
+position = Vector2(414, -32)
+shape = SubResource("RectangleShape2D_blocker")
+
+[node name="CollisionBlocker" type="StaticBody2D" parent="." unique_id=289794416]
 position = Vector2(10, 256)
 
-[node name="CollisionBlocker2" parent="." unique_id=1109207161 instance=ExtResource("8_s8va5")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBlocker" unique_id=236434058]
+position = Vector2(8, 65)
+shape = SubResource("RectangleShape2D_sk5k4")
+
+[node name="CollisionBlocker2" type="StaticBody2D" parent="." unique_id=1109207161]
 position = Vector2(1142, 260)
 
-[node name="CollisionBlocker3" parent="." unique_id=991171342 instance=ExtResource("8_s8va5")]
-position = Vector2(578, -93)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBlocker2" unique_id=1087757874]
+position = Vector2(-4, 69)
+shape = SubResource("RectangleShape2D_sk5k4")
+
+[node name="CollisionBlocker3" type="StaticBody2D" parent="." unique_id=991171342]
+position = Vector2(578, -287)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBlocker3" unique_id=350545423]
+position = Vector2(2, 292.5)
+shape = SubResource("RectangleShape2D_sk5k4")
 
 [node name="SigmaCharacter" parent="." unique_id=1253014624 instance=ExtResource("1_rhcg6")]
-position = Vector2(566, 273)
+position = Vector2(533, 253)

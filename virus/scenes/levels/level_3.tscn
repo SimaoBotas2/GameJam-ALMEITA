@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dmxf5ircwstlq"]
 
 [ext_resource type="Texture2D" uid="uid://df06bw3hfgei2" path="res://assets/hospital_rooms/sala_3.png" id="1_70nk6"]
-[ext_resource type="PackedScene" path="res://scenes/sigma_character_level3.tscn" id="2_h23n6"]
-[ext_resource type="PackedScene" uid="uid://b8dg15dwvbay5" path="res://scenes/buraco_blocker.tscn" id="3_hole"]
-[ext_resource type="PackedScene" path="res://scenes/botao_3.tscn" id="4_1pn4d"]
+[ext_resource type="PackedScene" uid="uid://b8dg15dwvbay5" path="res://scenes/objects/buraco_blocker.tscn" id="3_hole"]
+[ext_resource type="PackedScene" path="res://scenes/character/sigma_character_level3.tscn" id="4_0qepi"]
+[ext_resource type="PackedScene" uid="uid://cf37mdb0mpclv" path="res://scenes/botao_3.tscn" id="4_1pn4d"]
 
 [sub_resource type="Animation" id="Animation_reset"]
 length = 0.001
@@ -56,11 +56,11 @@ hframes = 5
 libraries/ = SubResource("AnimationLibrary_room")
 autoplay = &"room_animation"
 
-[node name="SigmaCharacter" parent="." unique_id=1253014624 instance=ExtResource("2_h23n6")]
-position = Vector2(203, 79)
-
 [node name="BuracoCollision" parent="." unique_id=1273140689 instance=ExtResource("3_hole")]
 position = Vector2(594, 224)
 
 [node name="Interaction_Object" parent="." unique_id=1999036460 instance=ExtResource("4_1pn4d")]
 position = Vector2(478, 191)
+
+[node name="SigmaCharacter" parent="." unique_id=2002220092 instance=ExtResource("4_0qepi")]
+position = Vector2(264, 103)

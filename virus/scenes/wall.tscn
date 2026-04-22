@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://d0fpao7f5781w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blocker"]
-size = Vector2(26, 435)
+size = Vector2(26, 633)
 
 [node name="CollisionBlocker" type="StaticBody2D" unique_id=118601839]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=118360166]
-position = Vector2(2, 193.5)
+position = Vector2(2, 292.5)
 shape = SubResource("RectangleShape2D_blocker")

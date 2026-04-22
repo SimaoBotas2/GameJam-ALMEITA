@@ -16,3 +16,9 @@ script = ExtResource("2_wo48x")
 
 [node name="SigmaCharacter" parent="." unique_id=1253014624 instance=ExtResource("1_3bmlt")]
 position = Vector2(138, 308)
+
+[node name="CollisionBlocker" type="StaticBody2D" parent="." unique_id=118601839]
+position = Vector2(198, 153)
+
+[node name="CollisionBlocker2" type="StaticBody2D" parent="." unique_id=327865981]
+position = Vector2(205, 664)
