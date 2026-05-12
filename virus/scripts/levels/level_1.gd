@@ -17,21 +17,21 @@ func _ready() -> void:
 	add_child(intro_player)
 	#play_intro_sequence()
 
-#func play_intro_sequence() -> void:
-	#if intro_started:
-		#return
-#
-	#intro_started = true
-#
-	#if player != null and player.has_method("lock_interaction"):
-		#player.lock_interaction()
-#
-	#for clip in INTRO_CLIPS:
-		#if clip == null:
-			#continue
-		#intro_player.stream = clip
-		#intro_player.play()
-		#await intro_player.finished
-#
-	#if player != null and player.has_method("unlock_interaction"):
-		#player.unlock_interaction()
+func play_intro_sequence() -> void:
+	if intro_started:
+		return
+
+	intro_started = true
+
+	if player != null and player.has_method("lock_interaction"):
+		player.lock_interaction()
+
+	for clip in INTRO_CLIPS:
+		if clip == null:
+			continue
+		intro_player.stream = clip
+		intro_player.play()
+		await intro_player.finished
+
+	if player != null and player.has_method("unlock_interaction"):
+		player.unlock_interaction()
