@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://df06bw3hfgei2" path="res://assets/hospital_rooms/sala_3.png" id="1_70nk6"]
 [ext_resource type="PackedScene" uid="uid://b8dg15dwvbay5" path="res://scenes/objects/buraco_blocker.tscn" id="3_hole"]
 [ext_resource type="PackedScene" path="res://scenes/character/sigma_character_level3.tscn" id="4_0qepi"]
-[ext_resource type="PackedScene" uid="uid://cf37mdb0mpclv" path="res://scenes/botao_3.tscn" id="4_1pn4d"]
+[ext_resource type="PackedScene" uid="uid://c4n321wpn4uvv" path="res://scenes/objects/botao_3.tscn" id="4_1pn4d"]
 
 [sub_resource type="Animation" id="Animation_reset"]
 length = 0.001

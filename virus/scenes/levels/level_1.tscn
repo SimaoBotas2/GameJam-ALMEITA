@@ -7,11 +7,17 @@
 [ext_resource type="PackedScene" uid="uid://dt4cwxs7edfeq" path="res://scenes/objects/door.tscn" id="4_rnwjm"]
 [ext_resource type="PackedScene" uid="uid://cnhqisvdrixic" path="res://scenes/objects/bed.tscn" id="5_ydh6h"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_blocker"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oc4kc"]
 size = Vector2(1152, 267.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blocker"]
+size = Vector2(1152, 38.625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sk5k4"]
 size = Vector2(26, 633)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8va5"]
+size = Vector2(23, 209)
 
 [node name="level_1" type="Node2D" unique_id=708592919]
 position = Vector2(-2, -1)
@@ -39,13 +45,13 @@ position = Vector2(156, 93)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall" unique_id=118360166]
 position = Vector2(434, 22.125)
-shape = SubResource("RectangleShape2D_blocker")
+shape = SubResource("RectangleShape2D_oc4kc")
 
 [node name="wall2" type="StaticBody2D" parent="." unique_id=60643796]
 position = Vector2(164, 793)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall2" unique_id=400680195]
-position = Vector2(414, -32.75)
+position = Vector2(414, -147.3125)
 shape = SubResource("RectangleShape2D_blocker")
 
 [node name="CollisionBlocker" type="StaticBody2D" parent="." unique_id=289794416]
@@ -66,8 +72,8 @@ shape = SubResource("RectangleShape2D_sk5k4")
 position = Vector2(578, -287)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBlocker3" unique_id=350545423]
-position = Vector2(2, 292.5)
-shape = SubResource("RectangleShape2D_sk5k4")
+position = Vector2(3.5, 504.5)
+shape = SubResource("RectangleShape2D_s8va5")
 
 [node name="SigmaCharacter" parent="." unique_id=1253014624 instance=ExtResource("1_rhcg6")]
 position = Vector2(533, 253)
