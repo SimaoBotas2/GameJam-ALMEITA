@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cwdicfw1npyc5"]
+
+[ext_resource type="Script" uid="uid://cm42vav2j3od3" path="res://scripts/objects/painting.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dpbei80pt23uc" path="res://assets/objects/painting1.jpg" id="2_3wevg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_painting"]
+size = Vector2(70, 94)
+
+[sub_resource type="Gradient" id="Gradient_frame"]
+colors = PackedColorArray(0.32, 0.2, 0.09, 1, 0.32, 0.2, 0.09, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_frame"]
+gradient = SubResource("Gradient_frame")
+width = 70
+height = 94
+
+[node name="Painting" type="Area2D" unique_id=1942989756]
+z_index = 10
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=564867981]
+shape = SubResource("RectangleShape2D_painting")
+
+[node name="FrameSprite" type="Sprite2D" parent="." unique_id=729457423]
+texture = SubResource("GradientTexture2D_frame")
+
+[node name="CanvasSprite" type="Sprite2D" parent="." unique_id=1956600810]
+z_index = 1
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("2_3wevg")
+
+[node name="InteractionLabel" type="Label" parent="." unique_id=1674700440]
+visible = false
+z_index = 1000
+z_as_relative = false
+offset_left = -63.0
+offset_top = -84.0
+offset_right = 67.0
+offset_bottom = -61.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+text = "Press E to inspect"
+horizontal_alignment = 1

@@ -7,6 +7,7 @@ extends CharacterBody2D
 
 var current_interaction_object: Area2D = null
 var interaction_locked: bool = false
+var movement_locked: bool = false
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
@@ -27,10 +28,12 @@ func _ready() -> void:
 	update_animation_parameters(starting_direction)
 
 func _physics_process(_delta: float) -> void:
-	var input_direction = Vector2(
-		Input.get_action_strength("right") - Input.get_action_strength("left"),
-		Input.get_action_strength("down") - Input.get_action_strength("up")
-	).normalized()
+	var input_direction = Vector2.ZERO
+	if not movement_locked:
+		input_direction = Vector2(
+			Input.get_action_strength("right") - Input.get_action_strength("left"),
+			Input.get_action_strength("down") - Input.get_action_strength("up")
+		).normalized()
 
 	velocity = input_direction * move_speed
 	move_and_slide()
@@ -109,6 +112,12 @@ func unlock_interaction() -> void:
 	interaction_locked = false
 	if current_interaction_object != null and current_interaction_object.has_method("show_prompt"):
 		current_interaction_object.show_prompt()
+
+func lock_movement() -> void:
+	movement_locked = true
+
+func unlock_movement() -> void:
+	movement_locked = false
 
 func _on_interaction_detector_area_entered(area: Area2D) -> void:
 	if area.is_in_group("interaction_object"):

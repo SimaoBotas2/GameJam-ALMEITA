@@ -32,7 +32,7 @@ scale = Vector2(5.120536, 2.892857)
 texture = ExtResource("3_hgbiv")
 
 [node name="caixa" parent="." unique_id=1999036460 instance=ExtResource("2_hgbiv")]
-position = Vector2(520, 275)
+position = Vector2(730, 369)
 
 [node name="door" parent="." unique_id=793826578 instance=ExtResource("4_rnwjm")]
 position = Vector2(1118, 306)
