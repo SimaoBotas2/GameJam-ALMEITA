@@ -6,7 +6,33 @@ var chain_released: bool = false
 # Guarda a skin atual da personagem para não se perder ao mudar de sala
 # (cada sala cria uma personagem nova, começaria sempre em "default" senão).
 var current_skin: String = "default"
+var inventory: Dictionary = {} #inventário do jogador (nome do item -> quantidade)
 var music_player: AudioStreamPlayer
+
+func add_item(item_name: String, amount: int = 1) -> void:
+	if amount <= 0:
+		return
+
+	if inventory.has(item_name):
+		inventory[item_name] += amount
+	else:
+		inventory[item_name] = amount
+
+func remove_item(item_name: String, amount: int = 1) -> bool:
+	if not inventory.has(item_name):
+		return false
+
+	inventory[item_name] = max(0, inventory[item_name] - amount)
+	if inventory[item_name] <= 0:
+		inventory.erase(item_name)
+
+	return true
+
+func get_item_count(item_name: String) -> int:
+	return inventory.get(item_name, 0)
+
+func clear_inventory() -> void:
+	inventory.clear()
 
 func _ready() -> void:
 	music_player = AudioStreamPlayer.new()

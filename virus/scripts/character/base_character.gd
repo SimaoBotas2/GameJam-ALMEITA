@@ -10,6 +10,7 @@ extends CharacterBody2D
 var current_interaction_object: Area2D = null
 var interaction_locked: bool = false
 var movement_locked: bool = false
+var inventory: Dictionary = {}
 
 # --- Skins / animação ---
 # current_skin diz qual está ativa agora. skin_animation_trees mapeia o nome
@@ -40,6 +41,7 @@ func _ready() -> void:
 	if game_state != null and game_state.current_skin != "default":
 		current_skin = game_state.current_skin
 
+	sync_inventory_from_state()
 	_activate_skin(current_skin)
 
 	if footsteps_player != null and footsteps_player.stream is AudioStreamWAV:
@@ -148,6 +150,39 @@ func set_skin(skin_name: String) -> void:
 	var game_state = get_node_or_null("/root/GameState")
 	if game_state != null:
 		game_state.current_skin = skin_name
+
+# --- Inventário ---
+
+func sync_inventory_from_state() -> void:
+	var game_state = get_node_or_null("/root/GameState")
+	if game_state != null:
+		inventory = game_state.inventory.duplicate(true)
+
+func add_to_inventory(item_name: String, amount: int = 1) -> void:
+	if amount <= 0:
+		return
+
+	var game_state = get_node_or_null("/root/GameState")
+	if game_state == null:
+		push_warning("GameState not found; inventory could not be updated.")
+		return
+
+	game_state.add_item(item_name, amount)
+	sync_inventory_from_state()
+
+func remove_from_inventory(item_name: String, amount: int = 1) -> bool:
+	var game_state = get_node_or_null("/root/GameState")
+	if game_state == null:
+		push_warning("GameState not found; inventory could not be updated.")
+		return false
+
+	var removed: bool = game_state.remove_item(item_name, amount)
+	if removed:
+		sync_inventory_from_state()
+	return removed
+
+func get_inventory_count(item_name: String) -> int:
+	return inventory.get(item_name, 0)
 
 # --- Som ---
 
