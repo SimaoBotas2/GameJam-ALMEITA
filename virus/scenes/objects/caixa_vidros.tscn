@@ -15,6 +15,7 @@ collision_mask = 0
 script = ExtResource("2_y8k3d")
 release_chain_on_use = true
 used_texture = ExtResource("3_blood")
+skin_on_use = "after_glass"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1272930995]
 position = Vector2(0, -0.5)

@@ -1,0 +1,365 @@
+[gd_scene format=3 uid="uid://b0hyi8yeyucvj"]
+
+[ext_resource type="Script" uid="uid://cdob7t48kkxjq" path="res://scripts/character/sigma_character.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://fhjk6poj5w60" path="res://assets/char/dungeon-hanging-chain.png" id="2_chain"]
+[ext_resource type="AudioStream" uid="uid://d13aa81r561p0" path="res://assets/sound/footsteps_echo_rapido.wav" id="3_steps"]
+[ext_resource type="Texture2D" uid="uid://c7yvamgfrweci" path="res://assets/char/stand_after_glass.png" id="4_idle_glass"]
+[ext_resource type="Texture2D" uid="uid://ct8g2s2yyifr8" path="res://assets/char/walking_after_glass.png" id="5_walk_glass"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(16, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_interact"]
+size = Vector2(42, 34)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_idle_default"]
+load_path = "res://.godot/imported/sih_idle.png-e72999ffb2353ccf560c16c63009262d.ctex"
+
+[sub_resource type="Animation" id="Animation_reset_default"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_idle_default")]
+}
+
+[sub_resource type="Animation" id="Animation_idle_default"]
+resource_name = "idle_animation"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_idle_default")]
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_walk_default"]
+load_path = "res://.godot/imported/sih_walking.png-b1639551a8aa27205f52b2f06f053493.ctex"
+
+[sub_resource type="Animation" id="Animation_walk_default"]
+resource_name = "walk_right"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_walk_default")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_default"]
+_data = {
+&"RESET": SubResource("Animation_reset_default"),
+&"idle_animation": SubResource("Animation_idle_default"),
+&"walk_right": SubResource("Animation_walk_default")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_idle_default"]
+animation = &"idle_animation"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_idle_default"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_idle_default")
+blend_point_0/pos = 0.0
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_walk_down_default"]
+animation = &"walk_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_walk_right_default"]
+animation = &"walk_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_walk_up_default"]
+animation = &"walk_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_walk_left_default"]
+animation = &"walk_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_walk_default"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_walk_down_default")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_walk_right_default")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_walk_up_default")
+blend_point_2/pos = Vector2(0, -1.1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_walk_left_default")
+blend_point_3/pos = Vector2(-1, 0)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_default"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_default"]
+states/Idle/node = SubResource("AnimationNodeBlendSpace1D_idle_default")
+states/Idle/position = Vector2(164, 30)
+states/Start/position = Vector2(42, 30)
+states/Walk/node = SubResource("AnimationNodeBlendSpace2D_walk_default")
+states/Walk/position = Vector2(164, 113)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_default")]
+
+[sub_resource type="Animation" id="Animation_reset_glass"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_idle_glass")]
+}
+
+[sub_resource type="Animation" id="Animation_idle_glass"]
+resource_name = "idle_animation"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_idle_glass")]
+}
+
+[sub_resource type="Animation" id="Animation_walk_glass"]
+resource_name = "walk_right"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_walk_glass")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_glass"]
+_data = {
+&"RESET": SubResource("Animation_reset_glass"),
+&"idle_animation": SubResource("Animation_idle_glass"),
+&"walk_right": SubResource("Animation_walk_glass")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_idle_glass"]
+animation = &"idle_animation"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_idle_glass"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_idle_glass")
+blend_point_0/pos = 0.0
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_walk_down_glass"]
+animation = &"walk_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_walk_right_glass"]
+animation = &"walk_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_walk_up_glass"]
+animation = &"walk_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_walk_left_glass"]
+animation = &"walk_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_walk_glass"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_walk_down_glass")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_walk_right_glass")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_walk_up_glass")
+blend_point_2/pos = Vector2(0, -1.1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_walk_left_glass")
+blend_point_3/pos = Vector2(-1, 0)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_glass"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_glass"]
+states/Idle/node = SubResource("AnimationNodeBlendSpace1D_idle_glass")
+states/Idle/position = Vector2(164, 30)
+states/Start/position = Vector2(42, 30)
+states/Walk/node = SubResource("AnimationNodeBlendSpace2D_walk_glass")
+states/Walk/position = Vector2(164, 113)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_glass")]
+
+[node name="SigmaCharacter" type="CharacterBody2D" unique_id=1366860957]
+position = Vector2(691, 356)
+scale = Vector2(3, 3)
+script = ExtResource("1_script")
+skin_animation_trees = {
+"after_glass": NodePath("AnimationTree_AfterGlass"),
+"default": NodePath("AnimationTree_Default")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1150526907]
+position = Vector2(-3, 42)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=285349581]
+modulate = Color(0.5513578, 0.55135787, 0.5513578, 1)
+show_behind_parent = true
+z_index = 20
+texture_filter = 1
+position = Vector2(2, -18)
+scale = Vector2(1, 1.491)
+texture = ExtResource("4_idle_glass")
+hframes = 4
+
+[node name="ChainSprite" type="Sprite2D" parent="." unique_id=882798554]
+show_behind_parent = true
+z_index = 10
+texture_filter = 1
+scale = Vector2(0.35, 0.08)
+texture = ExtResource("2_chain")
+
+[node name="InteractionDetector" type="Area2D" parent="." unique_id=1676737474]
+position = Vector2(-2, 42)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionDetector" unique_id=1682375839]
+shape = SubResource("RectangleShape2D_interact")
+
+[node name="AnimationPlayer_Default" type="AnimationPlayer" parent="." unique_id=1833039364]
+libraries/ = SubResource("AnimationLibrary_default")
+
+[node name="AnimationTree_Default" type="AnimationTree" parent="." unique_id=1843353117]
+tree_root = SubResource("AnimationNodeStateMachine_default")
+anim_player = NodePath("../AnimationPlayer_Default")
+parameters/Idle/blend_position = 0.0
+parameters/Walk/blend_position = Vector2(0, 1)
+
+[node name="AnimationPlayer_AfterGlass" type="AnimationPlayer" parent="." unique_id=82860173]
+libraries/ = SubResource("AnimationLibrary_glass")
+
+[node name="AnimationTree_AfterGlass" type="AnimationTree" parent="." unique_id=230658957]
+tree_root = SubResource("AnimationNodeStateMachine_glass")
+anim_player = NodePath("../AnimationPlayer_AfterGlass")
+parameters/Idle/blend_position = 0.0
+parameters/Walk/blend_position = Vector2(0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=267137212]
+zoom = Vector2(0.75, 0.75)
+limit_left = 0
+limit_top = 0
+limit_right = 1150
+limit_bottom = 642
+
+[node name="FootstepsPlayer" type="AudioStreamPlayer" parent="." unique_id=149288576]
+stream = ExtResource("3_steps")
+volume_db = 4.0
+pitch_scale = 1.05
+
+[connection signal="area_entered" from="InteractionDetector" to="." method="_on_interaction_detector_area_entered"]
+[connection signal="area_exited" from="InteractionDetector" to="." method="_on_interaction_detector_area_exited"]

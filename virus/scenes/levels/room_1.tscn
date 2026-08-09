@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ck77jjmh6cppu"]
 
-[ext_resource type="PackedScene" path="res://scenes/character/sigma_character_level3.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/character/sigma_character.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://dt4cwxs7edfeq" path="res://scenes/objects/door.tscn" id="2_g1qh7"]
 [ext_resource type="PackedScene" uid="uid://cwdicfw1npyc5" path="res://scenes/objects/painting.tscn" id="2_painting"]
 
@@ -66,7 +66,7 @@ position = Vector2(1150, 321)
 shape = SubResource("RectangleShape2D_wall_side")
 
 [node name="SigmaCharacter" parent="." unique_id=1879800811 instance=ExtResource("1_player")]
-position = Vector2(575, 450)
+position = Vector2(588, 190)
 
 [node name="Interaction_Object" parent="." unique_id=1999036460 instance=ExtResource("2_g1qh7")]
 position = Vector2(1139, 293)

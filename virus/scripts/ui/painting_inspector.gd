@@ -27,9 +27,12 @@ func close() -> void:
 	if target_player != null and target_player.has_method("unlock_movement"):
 		target_player.unlock_movement()
 
-	# Esperamos um frame para o mesmo clique que fechou isto não contar logo
-	# como um novo "interact" no quadro (senão abria e fechava no mesmo instante).
-	await get_tree().process_frame
+	# Esperamos a tecla ser mesmo largada antes de destrancar a interação.
+	# Só esperar um frame não chega sempre — is_action_just_pressed() é lido
+	# no _physics_process(), que corre a um ritmo diferente do process_frame,
+	# e às vezes ainda via a tecla como "acabada de premir" e reabria o quadro.
+	while Input.is_action_pressed("interact"):
+		await get_tree().process_frame
 
 	if target_player != null and target_player.has_method("unlock_interaction"):
 		target_player.unlock_interaction()

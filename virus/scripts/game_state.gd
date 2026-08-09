@@ -3,6 +3,9 @@ extends Node
 const LOOP_MUSIC = preload("res://assets/sound/loop.wav")
 
 var chain_released: bool = false
+# Guarda a skin atual da personagem para não se perder ao mudar de sala
+# (cada sala cria uma personagem nova, começaria sempre em "default" senão).
+var current_skin: String = "default"
 var music_player: AudioStreamPlayer
 
 func _ready() -> void:

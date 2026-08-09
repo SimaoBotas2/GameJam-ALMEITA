@@ -1,25 +1,46 @@
 class_name BaseCharacter
 extends CharacterBody2D
 
+# --- Movimento ---
 @export var move_speed: float = 350
 @export var starting_direction: Vector2 = Vector2.ZERO
 @export var scene_limit_margin: Vector2 = Vector2(8, 12)
 
+# --- Interação ---
 var current_interaction_object: Area2D = null
 var interaction_locked: bool = false
 var movement_locked: bool = false
 
-@onready var animation_tree: AnimationTree = $AnimationTree
-@onready var state_machine = animation_tree.get("parameters/playback")
+# --- Skins / animação ---
+# current_skin diz qual está ativa agora. skin_animation_trees mapeia o nome
+# de cada skin (ex: "default", "after_glass") para o caminho do AnimationTree
+# dela — cada skin tem o seu próprio par AnimationPlayer + AnimationTree,
+# todos a mexer no mesmo Sprite2D, e só um está ativo de cada vez.
+@export var current_skin: String = "default"
+@export var skin_animation_trees: Dictionary = {}
+
+var animation_tree: AnimationTree
+var state_machine
+
+# --- Referências a nós ---
 @onready var camera: Camera2D = $Camera2D
 @onready var body_collision: CollisionShape2D = $CollisionShape2D
 @onready var sprite: Sprite2D = $CollisionShape2D/Sprite2D
 @onready var footsteps_player: AudioStreamPlayer = $FootstepsPlayer
 
+# --- Ciclo de vida ---
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	add_to_group("player")
-	animation_tree.active = true
+
+	# Se já mudámos de skin nalguma sala anterior, o GameState lembra-se —
+	# senão perdia-se sempre que se muda de sala (cada sala cria uma
+	# personagem nova, com o current_skin da própria scene).
+	var game_state = get_node_or_null("/root/GameState")
+	if game_state != null and game_state.current_skin != "default":
+		current_skin = game_state.current_skin
+
+	_activate_skin(current_skin)
 
 	if footsteps_player != null and footsteps_player.stream is AudioStreamWAV:
 		var footsteps_stream := footsteps_player.stream as AudioStreamWAV
@@ -46,6 +67,8 @@ func _physics_process(_delta: float) -> void:
 	update_footsteps_audio()
 	handle_interaction()
 
+# --- Movimento ---
+
 # Dá para sobrepor isto nas subclasses para meter restrições de movimento extra
 # (ex: a corrente). Corre depois do move_and_slide() e antes do clamp_to_scene_limits().
 func _apply_movement_constraints() -> void:
@@ -56,31 +79,7 @@ func _apply_movement_constraints() -> void:
 func _post_physics_update() -> void:
 	pass
 
-func update_animation_parameters(move_input: Vector2) -> void:
-	if move_input != Vector2.ZERO:
-		animation_tree.set("parameters/Walk/blend_position", move_input)
-
-	if move_input.x < 0:
-		sprite.flip_h = true
-	elif move_input.x > 0:
-		sprite.flip_h = false
-
-func pick_new_state() -> void:
-	if velocity != Vector2.ZERO:
-		state_machine.travel("Walk")
-	else:
-		state_machine.travel("Idle")
-
-func update_footsteps_audio() -> void:
-	if footsteps_player == null:
-		return
-
-	if velocity.length() > 0.0:
-		if not footsteps_player.playing:
-			footsteps_player.play()
-	else:
-		footsteps_player.stop()
-
+# Não deixa a personagem sair da área visível da câmara.
 func clamp_to_scene_limits() -> void:
 	var half_size := Vector2.ZERO
 	if body_collision.shape is RectangleShape2D:
@@ -94,6 +93,75 @@ func clamp_to_scene_limits() -> void:
 
 	global_position.x = clampf(global_position.x, min_x, max_x)
 	global_position.y = clampf(global_position.y, min_y, max_y)
+
+# --- Animação ---
+
+# Manda a direção do movimento para a AnimationTree ativa (para o blend do
+# Walk) e vira o sprite (flip_h) consoante ando para a esquerda ou direita.
+func update_animation_parameters(move_input: Vector2) -> void:
+	if move_input != Vector2.ZERO:
+		animation_tree.set("parameters/Walk/blend_position", move_input)
+
+	if move_input.x < 0:
+		sprite.flip_h = true
+	elif move_input.x > 0:
+		sprite.flip_h = false
+
+# Corre todos os frames e decide se a state machine devia estar em Walk ou
+# Idle, consoante a personagem tem velocidade ou não.
+func pick_new_state() -> void:
+	if velocity != Vector2.ZERO:
+		state_machine.travel("Walk")
+	else:
+		state_machine.travel("Idle")
+
+# --- Skins ---
+
+# Desliga a AnimationTree de todas as skins menos a pedida, e atualiza
+# animation_tree/state_machine para apontarem para a que ficou ativa.
+# É "privada" (underscore) porque não trata de repor a pose (Walk/Idle) da
+# skin nova — quem quiser trocar de skin a sério devia usar o set_skin().
+func _activate_skin(skin_name: String) -> void:
+	for skin in skin_animation_trees:
+		var tree: AnimationTree = get_node_or_null(skin_animation_trees[skin])
+		if tree != null:
+			tree.active = (skin == skin_name)
+
+	var new_tree: AnimationTree = get_node_or_null(skin_animation_trees.get(skin_name))
+	if new_tree != null:
+		animation_tree = new_tree
+		state_machine = animation_tree.get("parameters/playback")
+
+	current_skin = skin_name
+
+# Ponto de entrada público para trocar de skin em runtime (ex: a personagem
+# perder o braço a meio da história). Ativa a skin nova e já repõe logo o
+# estado de animação certo (Walk/Idle), para não ficar um frame na pose errada.
+func set_skin(skin_name: String) -> void:
+	if not skin_animation_trees.has(skin_name):
+		push_warning("Skin '%s' not found in skin_animation_trees." % skin_name)
+		return
+
+	_activate_skin(skin_name)
+	pick_new_state()
+
+	var game_state = get_node_or_null("/root/GameState")
+	if game_state != null:
+		game_state.current_skin = skin_name
+
+# --- Som ---
+
+func update_footsteps_audio() -> void:
+	if footsteps_player == null:
+		return
+
+	if velocity.length() > 0.0:
+		if not footsteps_player.playing:
+			footsteps_player.play()
+	else:
+		footsteps_player.stop()
+
+# --- Interação ---
 
 func handle_interaction() -> void:
 	if interaction_locked:

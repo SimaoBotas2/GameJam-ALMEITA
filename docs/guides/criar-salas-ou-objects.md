@@ -1,5 +1,9 @@
 # Como criar uma sala nova
 
+# Autor : Botas
+# Co-Autor : Claude
+
+
 ## 1. Estrutura base
 
 Cria uma scene nova em virus/scenes/levels/, root Node2D. Dentro:
@@ -13,19 +17,21 @@ Todas as salas usam o mesmo tamanho de mundo: 1150 x 642. Isto está fixo na câ
 
 ## 2. Instanciar a personagem
 
-Usa uma destas duas scenes de virus/scenes/character/:
+Há uma scene só de personagem: virus/scenes/character/sigma_character.tscn. Não se cria uma scene nem um script novo por sala — todas as salas usam esta mesma scene, e o que muda por sala são só propriedades no Inspector do nó raiz (SigmaCharacter):
 
-| Scene | has_chain | Quando usar |
-|---|---|---|
-| sigma_character1.tscn | true | Salas onde a personagem ainda tem a corrente (level_1, level_2) |
-| sigma_character_level3.tscn | false | Salas sem corrente |
+| Propriedade | O que faz |
+|---|---|
+| has_chain | true se esta sala ainda tem a mecânica da corrente, false se não |
+| current_skin | qual o visual da personagem nesta sala (ex: "default", "after_glass") |
 
-Ambas usam o mesmo script, sigma_character.gd — a diferença é só a flag has_chain e os sprites. Não criem um script novo para uma sala nova; se precisares de uma variante visual nova, duplica uma destas scenes e troca só as texturas/animações.
+As skins (idle/walk de cada visual) já estão todas dentro da sigma_character.tscn, cada uma com o seu par AnimationPlayer + AnimationTree. Para criar uma skin nova, ver docs/guides/criar-animacoes.md — não é preciso mexer nesta sala nem duplicar a scene da personagem.
 
 Passos:
-1. Arrasta a scene certa para a tua sala.
+1. Arrasta a sigma_character.tscn para a tua sala.
 2. Posiciona-a onde a personagem deve nascer.
-3. Se a sala não tiver corrente, confirma que has_chain fica a false no Inspector.
+3. Ajusta has_chain e current_skin no Inspector consoante o que esta sala precisa.
+
+Nota: current_skin/has_chain só valem para o primeiro nascimento da personagem. Se a skin ou a corrente mudarem a meio do jogo (ex: usar a caixa de vidros), isso fica guardado no GameState e continua a valer nas salas seguintes, por cima do que puseres aqui.
 
 ## 3. Colocar uma porta
 

@@ -1,14 +1,17 @@
 extends BaseCharacter
 
+#Talvez mudar a lógica da corrente mais tarde se for necessária noutra sala.
+#se for preciso adicioanr uma função pública para atualziar estes valores.
+
 # Comprimento da Corrrente
-@export var chain_max_distance: float = 150.0
+@export var chain_max_distance: float = 350.0
 
 # Offset calculado a partir do centro do spawn do Sih
-@export var chain_anchor_offset: Vector2 = Vector2(80, 150)
+@export var chain_anchor_offset: Vector2 = Vector2(0,150)
 
 # Onde é que a corrente agarra a personagem (não é exatamente o centro dela,
 # é este offset a partir da posição da personagem).
-@export var chain_attach_offset: Vector2 = Vector2(0, 150)
+@export var chain_attach_offset: Vector2 = Vector2(0,150)
 
 # Liga/desliga a mecânica toda da corrente. Por isto a false e o resto do código da corrente nem corre.
 @export var has_chain: bool = true
