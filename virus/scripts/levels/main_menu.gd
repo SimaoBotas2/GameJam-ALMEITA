@@ -7,6 +7,7 @@ extends Control
 
 # Caminho da imagem do cursor personalizado (o "Copy Path" no FileSystem).
 var cursor_sprite = preload("res://assets/menu/seringe_cur.png")
+@export_file("*.tscn") var next_scene_path: String = "res://scenes/levels/room_1.tscn"
 
 func _ready() -> void:
 	$AudioStreamPlayer.play(0.9)
@@ -21,7 +22,7 @@ func _on_texture_button_play_pressed():
 	$SFXPlayer.play(0.2)
 	await get_tree().create_timer(0.23).timeout
 	$SFXPlayer.stop()
-	get_tree().change_scene_to_file("res://scenes/levels/level_1.tscn")
+	get_tree().change_scene_to_file(next_scene_path)
 	
 func _on_texture_button_options_pressed():
 	if options_popup != null:
