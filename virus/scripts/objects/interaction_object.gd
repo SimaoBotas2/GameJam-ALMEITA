@@ -19,7 +19,14 @@ func _ready() -> void:
 	interaction_label.z_as_relative = false
 	interaction_label.z_index = 1000
 
+func get_prompt_text() -> String:
+	return interaction_label.text
+
+func update_prompt_text() -> void:
+	interaction_label.text = get_prompt_text()
+
 func show_prompt() -> void:
+	update_prompt_text()
 	interaction_label.visible = true
 	clamp_prompt_to_scene()
 
