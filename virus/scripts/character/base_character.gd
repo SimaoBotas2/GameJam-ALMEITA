@@ -46,13 +46,13 @@ func _physics_process(_delta: float) -> void:
 	update_footsteps_audio()
 	handle_interaction()
 
-# Override in subclasses to apply extra movement constraints (e.g. chain tether)
-# called after move_and_slide() and before clamp_to_scene_limits()
+# Dá para sobrepor isto nas subclasses para meter restrições de movimento extra
+# (ex: a corrente). Corre depois do move_and_slide() e antes do clamp_to_scene_limits().
 func _apply_movement_constraints() -> void:
 	pass
 
-# Override in subclasses for extra per-frame updates (e.g. chain visual)
-# called after clamp_to_scene_limits() and before animation updates
+# Dá para sobrepor isto nas subclasses para atualizar coisas todos os frames
+# (ex: o visual da corrente). Corre depois do clamp_to_scene_limits() e antes das animações.
 func _post_physics_update() -> void:
 	pass
 

@@ -2,23 +2,22 @@ extends Control
 
 @onready var play_button = $TextureButton_Play
 @onready var options_button = $TextureButton_Options
-# Certifica-te que tens um nó chamado "OptionsPopup" na tua cena!
-@onready var options_popup = $OptionsPopup 
+# Tem de haver um nó chamado "OptionsPopup" nesta cena, se não isto rebenta.
+@onready var options_popup = $OptionsPopup
 
-# Substitui o que está entre aspas pelo "Copy Path" da tua imagem real
+# Caminho da imagem do cursor personalizado (o "Copy Path" no FileSystem).
 var cursor_sprite = preload("res://assets/menu/seringe_cur.png")
 
 func _ready() -> void:
 	$AudioStreamPlayer.play(0.9)
-	# Só tenta esconder se o nó realmente existir para evitar crashes
+	# Só escondemos se o popup existir mesmo, para não rebentar por causa disto
 	if options_popup != null:
 		options_popup.hide()
-		
+
 	Input.set_custom_mouse_cursor(cursor_sprite)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _on_texture_button_play_pressed():
-	# Nome do ficheiro corrigido de acordo com a tua pasta scenes
 	$SFXPlayer.play(0.2)
 	await get_tree().create_timer(0.23).timeout
 	$SFXPlayer.stop()

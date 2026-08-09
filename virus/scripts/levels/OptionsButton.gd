@@ -1,11 +1,11 @@
 extends Node
 
 
-# Called when the node enters the scene tree for the first time.
+# Corre quando o nó entra na scene tree pela primeira vez.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass # por preencher
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Corre em todos os frames. "delta" é o tempo desde o frame anterior.
 func _process(delta: float) -> void:
 	pass

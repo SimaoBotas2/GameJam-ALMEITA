@@ -1,5 +1,9 @@
 extends "res://scripts/objects/interaction_object.gd"
 
+# Antes isto ia sempre para a level_2 fixo no código. Agora dá para escolher
+# a cena no Inspector, para podermos copiar esta porta e usar em qualquer sala.
+@export_file("*.tscn") var next_scene_path: String = "res://scenes/levels/level_2.tscn"
+
 @onready var audio_player: AudioStreamPlayer2D = get_node_or_null("InteractionLabel/AudioStreamPlayer2D")
 
 func _on_interact() -> void:
@@ -10,4 +14,6 @@ func _on_interact() -> void:
 
 	if played_sound:
 		await audio_player.finished
-	get_tree().change_scene_to_file("res://scenes/levels/level_2.tscn")
+
+	if not next_scene_path.is_empty():
+		get_tree().change_scene_to_file(next_scene_path)

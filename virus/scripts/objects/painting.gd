@@ -1,8 +1,13 @@
-extends Area2D
+extends "res://scripts/objects/interaction_object.gd"
+
+# Isto é o comportamento de um quadro que se pode inspecionar de perto.
+# Herdamos do interaction_object para aproveitar o setup do label e do grupo
+# "interaction_object", mas o interact() é todo nosso: a base foi feita para
+# coisas de uso único (porta, botão) que se desligam depois do primeiro clique,
+# e aqui o quadro tem de poder ser aberto e fechado as vezes que quisermos.
 
 @export var painting_title: String = "Painting"
 @export var closeup_texture: Texture2D
-@export var prompt_offset: Vector2 = Vector2(0, -64)
 
 @export var frame_display_size: Vector2 = Vector2(70, 94)
 @export var canvas_display_size: Vector2 = Vector2(58, 82)
@@ -13,19 +18,14 @@ var is_open: bool = false
 
 @onready var frame_sprite: Sprite2D = $FrameSprite
 @onready var canvas_sprite: Sprite2D = $CanvasSprite
-@onready var interaction_label: Label = $InteractionLabel
 
 func _ready() -> void:
-	add_to_group("interaction_object")
-	interaction_label.visible = false
-	interaction_label.top_level = true
-	interaction_label.z_as_relative = false
-	interaction_label.z_index = 1000
-
+	super._ready()
 	_fit_sprite_to_box(frame_sprite, frame_display_size)
 	_fit_sprite_to_box(canvas_sprite, canvas_display_size)
 
-## Scales a sprite so its texture fits entirely inside the painting, was getting bigger textures before.
+## Encolhe/aumenta a sprite para a textura caber toda dentro do tamanho pedido,
+## sem esticar (a imagem entrava sempre maior do que o quadro antes disto).
 func _fit_sprite_to_box(sprite: Sprite2D, target_size: Vector2) -> void:
 	if sprite == null or sprite.texture == null:
 		return
@@ -37,13 +37,15 @@ func _fit_sprite_to_box(sprite: Sprite2D, target_size: Vector2) -> void:
 	var scale_factor = min(target_size.x / texture_size.x, target_size.y / texture_size.y)
 	sprite.scale = Vector2(scale_factor, scale_factor)
 
+# Sobrepomos só o show_prompt da base para não mostrar a dica enquanto o
+# quadro já está aberto (a base guarda-se com "was_used", nós com "is_open").
+# hide_prompt() não precisa de override, o da base já serve na mesma.
 func show_prompt() -> void:
 	if not is_open:
-		interaction_label.visible = true
+		super.show_prompt()
 
-func hide_prompt() -> void:
-	interaction_label.visible = false
-
+# Este interact() substitui por completo o da base (não chamamos super.interact()),
+# porque não queremos desligar a colisão do quadro depois de usar uma vez.
 func interact() -> void:
 	if is_open:
 		return

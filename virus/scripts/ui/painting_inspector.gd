@@ -27,8 +27,8 @@ func close() -> void:
 	if target_player != null and target_player.has_method("unlock_movement"):
 		target_player.unlock_movement()
 
-	# Wait a frame so the same key press that closed the inspector
-	# doesn't also register as a fresh "interact" on the painting.
+	# Esperamos um frame para o mesmo clique que fechou isto não contar logo
+	# como um novo "interact" no quadro (senão abria e fechava no mesmo instante).
 	await get_tree().process_frame
 
 	if target_player != null and target_player.has_method("unlock_interaction"):

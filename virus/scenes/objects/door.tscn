@@ -11,7 +11,7 @@ z_index = 50
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("2_y8k3d")
-next_scene_path = "res://scenes/level_2.tscn"
+next_scene_path = "res://scenes/levels/level_2.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1272930995]
 position = Vector2(0, 58)

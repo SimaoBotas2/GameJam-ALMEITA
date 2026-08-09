@@ -1,6 +1,9 @@
 extends "res://scripts/objects/interaction_object.gd"
 
 @export var used_texture: Texture2D
+# Deixamos vazio por default porque nem todos os botões mudam de sala (alguns só
+# fazem outra coisa). Escolhe-se a cena no Inspector para dar para reusar este
+# botão em qualquer sítio, sem ter de copiar/alterar o script.
 @export_file("*.tscn") var next_scene_path: String = ""
 
 @onready var sprite: Sprite2D = get_node_or_null("Sprite2D")
