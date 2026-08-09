@@ -1,4 +1,4 @@
-extends "res://scripts/objects/interaction_object.gd"
+extends "res://scripts/objects/single_use_interactable.gd"
 
 @export var used_texture: Texture2D
 # Deixamos vazio por default porque nem todos os botões mudam de sala (alguns só

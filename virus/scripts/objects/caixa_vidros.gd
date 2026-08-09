@@ -1,4 +1,4 @@
-extends "res://scripts/objects/interaction_object.gd"
+extends "res://scripts/objects/single_use_interactable.gd"
 
 @export var release_chain_on_use: bool = false
 @export var used_texture: Texture2D

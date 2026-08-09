@@ -1,9 +1,13 @@
 extends Area2D
 
+# Base de qualquer coisa com que a personagem possa interagir (porta, botão,
+# quadro, etc). Só trata do que é comum a todos: o grupo, o label e
+# manter a dica dentro dos limites da câmara. Não decide se dá para
+# interagir mais que uma vez, isso fica para single_use_interactable.gd ou
+# repeatable_interactable.gd, que estendem isto.
+
 @export var prompt_offset: Vector2 = Vector2(0, -64)
 @export var prompt_margin: Vector2 = Vector2(12, 12)
-
-var was_used: bool = false
 
 @onready var interaction_label: Label = $InteractionLabel
 
@@ -16,9 +20,8 @@ func _ready() -> void:
 	interaction_label.z_index = 1000
 
 func show_prompt() -> void:
-	if not was_used:
-		interaction_label.visible = true
-		clamp_prompt_to_scene()
+	interaction_label.visible = true
+	clamp_prompt_to_scene()
 
 func hide_prompt() -> void:
 	interaction_label.visible = false
@@ -51,17 +54,10 @@ func clamp_prompt_to_scene() -> void:
 		clampf(desired_position.y, min_y, max_y)
 	)
 
+# Cada subclasse define as regras de quando é que se pode interagir outra vez.
 func interact() -> void:
-	if was_used:
-		return
+	pass
 
-	was_used = true
-	interaction_label.visible = false
-	monitoring = false
-	monitorable = false
-	collision_layer = 0
-
-	_on_interact()
-
+# É só isto que um objeto novo precisa de implementar.
 func _on_interact() -> void:
 	pass

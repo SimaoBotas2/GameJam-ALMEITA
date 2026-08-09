@@ -1,6 +1,6 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://scripts/character/sigma_character_level3.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://cdob7t48kkxjq" path="res://scripts/character/sigma_character.gd" id="1_script"]
 [ext_resource type="Texture2D" path="res://assets/char/stand_after_arm.png" id="2_idle"]
 [ext_resource type="Texture2D" path="res://assets/char/walking_after_arm.png" id="3_walk"]
 [ext_resource type="AudioStream" uid="uid://d13aa81r561p0" path="res://assets/sound/footsteps_echo_rapido.wav" id="4_steps"]
@@ -149,9 +149,11 @@ states/Walk/position = Vector2(164, 113)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_main")]
 
 [node name="SigmaCharacter" type="CharacterBody2D"]
+z_index = 1
 position = Vector2(691, 356)
 scale = Vector2(3, 3)
 script = ExtResource("1_script")
+has_chain = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 42)

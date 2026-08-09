@@ -65,8 +65,9 @@ position = Vector2(1150, 321)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight" unique_id=354651211]
 shape = SubResource("RectangleShape2D_wall_side")
 
-[node name="Interaction_Object" parent="WallRight" unique_id=1999036460 instance=ExtResource("2_g1qh7")]
-position = Vector2(-19, -37)
-
 [node name="SigmaCharacter" parent="." unique_id=1879800811 instance=ExtResource("1_player")]
 position = Vector2(575, 450)
+
+[node name="Interaction_Object" parent="." unique_id=1999036460 instance=ExtResource("2_g1qh7")]
+position = Vector2(1139, 293)
+next_scene_path = "uid://ck77jjmh6cppu"

@@ -64,9 +64,3 @@ position = Vector2(478, 191)
 
 [node name="SigmaCharacter" parent="." unique_id=2002220092 instance=ExtResource("4_0qepi")]
 position = Vector2(264, 103)
-chain_max_distance = null
-chain_anchor_offset = null
-chain_attach_offset = null
-move_speed = null
-starting_direction = null
-scene_limit_margin = null

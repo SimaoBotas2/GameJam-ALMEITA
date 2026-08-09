@@ -1,4 +1,4 @@
-extends "res://scripts/objects/interaction_object.gd"
+extends "res://scripts/objects/single_use_interactable.gd"
 
 @export var target_node: NodePath
 @export var scale_multiplier: Vector2 = Vector2(1.15, 1.15)

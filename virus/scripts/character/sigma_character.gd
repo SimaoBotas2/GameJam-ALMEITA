@@ -1,30 +1,47 @@
 extends BaseCharacter
 
+# Comprimento da Corrrente
 @export var chain_max_distance: float = 150.0
+
+# Offset calculado a partir do centro do spawn do Sih
 @export var chain_anchor_offset: Vector2 = Vector2(80, 150)
+
+# Onde é que a corrente agarra a personagem (não é exatamente o centro dela,
+# é este offset a partir da posição da personagem).
 @export var chain_attach_offset: Vector2 = Vector2(0, 150)
 
+# Liga/desliga a mecânica toda da corrente. Por isto a false e o resto do código da corrente nem corre.
+@export var has_chain: bool = true
+
+# Posição no mundo do ponto fixo da corrente, calculada uma vez no _ready()
+# a partir do chain_anchor_offset (só faz sentido se has_chain for true).
 var chain_anchor_global_position: Vector2
+
+# Fica true assim que a corrente é largada (via release_chain()) a partir
+# daí a personagem deixa de estar limitada pela corrente.
 var chain_released: bool = false
 
-@onready var chain_sprite: Sprite2D = $ChainSprite
+@onready var chain_sprite: Sprite2D = get_node_or_null("ChainSprite")
 
 func _ready() -> void:
 	super()
-	chain_anchor_global_position = global_position + chain_anchor_offset
-	chain_sprite.top_level = true
+	if has_chain:
+		chain_anchor_global_position = global_position + chain_anchor_offset
+		chain_sprite.top_level = true
 
-	var game_state = get_node_or_null("/root/GameState")
-	if game_state != null and game_state.chain_released:
-		chain_released = true
+		var game_state = get_node_or_null("/root/GameState")
+		if game_state != null and game_state.chain_released:
+			chain_released = true
 
-	update_chain_visual()
+		update_chain_visual()
 
 func _apply_movement_constraints() -> void:
-	clamp_to_chain_limits()
+	if has_chain:
+		clamp_to_chain_limits()
 
 func _post_physics_update() -> void:
-	update_chain_visual()
+	if has_chain:
+		update_chain_visual()
 
 func clamp_to_chain_limits() -> void:
 	if chain_released:
