@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dmxf5ircwstlq"]
 
+[ext_resource type="Script" uid="uid://dfg8fpjiomjsh" path="res://scripts/levels/level_3.gd" id="0_levelscript"]
 [ext_resource type="Texture2D" uid="uid://df06bw3hfgei2" path="res://assets/hospital_rooms/sala_3.png" id="1_70nk6"]
 [ext_resource type="PackedScene" uid="uid://b8dg15dwvbay5" path="res://scenes/objects/buraco_blocker.tscn" id="3_hole"]
 [ext_resource type="PackedScene" path="res://scenes/character/sigma_character.tscn" id="4_0qepi"]
@@ -44,6 +45,7 @@ _data = {
 }
 
 [node name="Level3" type="Node2D" unique_id=78406577]
+script = ExtResource("0_levelscript")
 
 [node name="Sala3" type="Sprite2D" parent="." unique_id=1909992249]
 texture_filter = 1
