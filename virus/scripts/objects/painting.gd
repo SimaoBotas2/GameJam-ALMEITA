@@ -46,4 +46,4 @@ func _on_interact() -> void:
 	var inspector = PaintingInspectorScene.instantiate()
 	get_tree().current_scene.add_child(inspector)
 	inspector.closed.connect(finish_interaction)
-	inspector.open(texture_to_show, painting_title, player)
+	inspector.open_painting(texture_to_show, painting_title, player)

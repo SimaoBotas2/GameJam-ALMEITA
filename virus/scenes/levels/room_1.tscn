@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://ck77jjmh6cppu"]
 
-[ext_resource type="PackedScene" path="res://scenes/character/sigma_character.tscn" id="1_player"]
+[ext_resource type="PackedScene" uid="uid://b0hyi8yeyucvj" path="res://scenes/character/sigma_character.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://dt4cwxs7edfeq" path="res://scenes/objects/door.tscn" id="2_g1qh7"]
 [ext_resource type="PackedScene" uid="uid://cwdicfw1npyc5" path="res://scenes/objects/painting.tscn" id="2_painting"]
+[ext_resource type="PackedScene" uid="uid://1d3sf0nu61mx" path="res://scenes/objects/chest.tscn" id="4_btv68"]
+[ext_resource type="Texture2D" uid="uid://dgw7g5t5ssrfr" path="res://assets/objects/chest/chest_open.png" id="5_d4yrl"]
 
 [sub_resource type="Gradient" id="Gradient_bg"]
 colors = PackedColorArray(0.16, 0.15, 0.17, 1, 0.16, 0.15, 0.17, 1)
@@ -68,6 +70,10 @@ shape = SubResource("RectangleShape2D_wall_side")
 [node name="SigmaCharacter" parent="." unique_id=1879800811 instance=ExtResource("1_player")]
 position = Vector2(588, 190)
 
-[node name="Interaction_Object" parent="." unique_id=1999036460 instance=ExtResource("2_g1qh7")]
-position = Vector2(1139, 293)
+[node name="Door" parent="." unique_id=1999036460 instance=ExtResource("2_g1qh7")]
+position = Vector2(1139, 300)
 next_scene_path = "uid://ck77jjmh6cppu"
+
+[node name="Chest" parent="." unique_id=2064706294 instance=ExtResource("4_btv68")]
+position = Vector2(768, 360)
+closeup_texture = ExtResource("5_d4yrl")

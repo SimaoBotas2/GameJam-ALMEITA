@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://cgfn4mu34gxe4"]
+
+[ext_resource type="Script" uid="uid://0pbn6b7g1cko" path="res://scripts/ui/chest_inspector.gd" id="1_1dbpe"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1295168457]
+script = ExtResource("1_1dbpe")
+
+[node name="Background" type="ColorRect" parent="." unique_id=837678330]
+z_index = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7490196)
+
+[node name="TitleLabel" type="Label" parent="Background" unique_id=686570126]
+layout_mode = 0
+offset_left = -75.0
+offset_top = -80.0
+offset_right = 65.0
+offset_bottom = -57.0
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background" unique_id=682722076]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Dial1" type="ColorRect" parent="Background/HBoxContainer" unique_id=2139240459]
+custom_minimum_size = Vector2(60, 120)
+layout_mode = 2
+color = Color(0.17847702, 0.18463725, 0.18987826, 1)
+
+[node name="Label" type="Label" parent="Background/HBoxContainer/Dial1" unique_id=1850319666]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dial2" type="ColorRect" parent="Background/HBoxContainer" unique_id=1242646807]
+custom_minimum_size = Vector2(60, 120)
+layout_mode = 2
+color = Color(0.18039216, 0.18431373, 0.1882353, 1)
+
+[node name="Label" type="Label" parent="Background/HBoxContainer/Dial2" unique_id=296347561]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dial3" type="ColorRect" parent="Background/HBoxContainer" unique_id=169192215]
+custom_minimum_size = Vector2(60, 120)
+layout_mode = 2
+color = Color(0.18039216, 0.18431373, 0.1882353, 1)
+
+[node name="Label" type="Label" parent="Background/HBoxContainer/Dial3" unique_id=1617726159]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
