@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://c5bn3xvlc0q07" path="res://scenes/objects/book.tscn" id="1_85nx6"]
 [ext_resource type="PackedScene" uid="uid://b0hyi8yeyucvj" path="res://scenes/character/sigma_character.tscn" id="2_bd6jh"]
 [ext_resource type="PackedScene" uid="uid://p7h7b02hv3pe" path="res://scenes/objects/scale.tscn" id="3_bd6jh"]
-[ext_resource type="Script" uid="uid://b2gbbewhw5nnp" path="res://scripts/objects/scale.gd" id="4_l4285"]
 
 [sub_resource type="Gradient" id="Gradient_bg"]
 colors = PackedColorArray(0.16, 0.15, 0.17, 1, 0.16, 0.15, 0.17, 1)
@@ -69,4 +68,3 @@ has_chain = false
 
 [node name="scale" parent="." unique_id=186673162 instance=ExtResource("3_bd6jh")]
 position = Vector2(851, 359)
-script = ExtResource("4_l4285")

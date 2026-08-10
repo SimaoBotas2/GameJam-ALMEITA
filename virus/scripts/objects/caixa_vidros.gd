@@ -7,7 +7,7 @@ extends "res://scripts/objects/single_use_interactable.gd"
 
 
 @onready var sprite: Sprite2D = get_node_or_null("Sprite2D")
-@onready var audio_player: AudioStreamPlayer2D = get_node_or_null("InteractionLabel/AudioStreamPlayer2D")
+@onready var audio_player: AudioStreamPlayer2D = get_node_or_null("InteractionZone/InteractionLabel/AudioStreamPlayer2D")
 
 func _on_interact() -> void:
 	if audio_player != null and audio_player.stream != null:

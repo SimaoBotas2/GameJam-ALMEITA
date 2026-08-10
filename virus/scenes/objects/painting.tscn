@@ -14,13 +14,13 @@ gradient = SubResource("Gradient_frame")
 width = 70
 height = 94
 
-[node name="Painting" type="Area2D" unique_id=1942989756]
+[node name="Painting" type="StaticBody2D" unique_id=1942989756]
 z_index = 10
-collision_layer = 2
-collision_mask = 0
 script = ExtResource("1_script")
+is_solid = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=564867981]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=564867982]
+disabled = true
 shape = SubResource("RectangleShape2D_painting")
 
 [node name="FrameSprite" type="Sprite2D" parent="." unique_id=729457423]
@@ -31,7 +31,14 @@ z_index = 1
 scale = Vector2(0.082, 0.082)
 texture = ExtResource("2_3wevg")
 
-[node name="InteractionLabel" type="Label" parent="." unique_id=1674700440]
+[node name="InteractionZone" type="Area2D" parent="." unique_id=1942989757]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone" unique_id=564867981]
+shape = SubResource("RectangleShape2D_painting")
+
+[node name="InteractionLabel" type="Label" parent="InteractionZone" unique_id=1674700440]
 visible = false
 z_index = 1000
 z_as_relative = false

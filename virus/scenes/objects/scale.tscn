@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://p7h7b02hv3pe"]
 
 [ext_resource type="Texture2D" uid="uid://cvd8b2o0sl88m" path="res://assets/objects/scale1.png" id="1_p6u8b"]
+[ext_resource type="Script" uid="uid://b2gbbewhw5nnp" path="res://scripts/objects/scale.gd" id="2_l4285"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8tiqc"]
 size = Vector2(172, 136.75003)
 
-[node name="scale" type="Area2D" unique_id=186673162]
+[node name="scale" type="StaticBody2D" unique_id=186673162]
 position = Vector2(-135, 41)
-collision_layer = 2
-collision_mask = 0
+script = ExtResource("2_l4285")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=838675559]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=838675560]
 position = Vector2(201, -42.625)
 scale = Vector2(1, 0.99999994)
 shape = SubResource("RectangleShape2D_8tiqc")
@@ -20,7 +20,16 @@ position = Vector2(133, -40)
 scale = Vector2(1.4049243, 0.8320613)
 texture = ExtResource("1_p6u8b")
 
-[node name="InteractionLabel" type="Label" parent="." unique_id=517123470]
+[node name="InteractionZone" type="Area2D" parent="." unique_id=186673163]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone" unique_id=838675559]
+position = Vector2(201, -42.625)
+scale = Vector2(1, 0.99999994)
+shape = SubResource("RectangleShape2D_8tiqc")
+
+[node name="InteractionLabel" type="Label" parent="InteractionZone" unique_id=517123470]
 visible = false
 z_index = 1000
 z_as_relative = false

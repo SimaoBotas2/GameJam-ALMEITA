@@ -16,9 +16,9 @@ func interact() -> void:
 
 	was_used = true
 	hide_prompt()
-	monitoring = false
-	monitorable = false
-	collision_layer = 0
+	interaction_zone.monitoring = false
+	interaction_zone.monitorable = false
+	interaction_zone.collision_layer = 0
 
 	# implementa isto nas subclasses concretas (definido em interaction_object.gd)
 	_on_interact()

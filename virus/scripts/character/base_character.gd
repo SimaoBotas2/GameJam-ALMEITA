@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var scene_limit_margin: Vector2 = Vector2(8, 12)
 
 # --- Interação ---
-var current_interaction_object: Area2D = null
+var current_interaction_object: Node = null
 var interaction_locked: bool = false
 var movement_locked: bool = false
 var inventory: Dictionary = {}
@@ -222,14 +222,18 @@ func lock_movement() -> void:
 func unlock_movement() -> void:
 	movement_locked = false
 
+# Os objetos interativos são StaticBody2D com uma Area2D filha (InteractionZone)
+# só para deteção — é essa área que gera o sinal, mas quem tem o script (e os
+# métodos show_prompt/interact) é o pai dela, por isso subimos com get_parent().
 func _on_interaction_detector_area_entered(area: Area2D) -> void:
 	if area.is_in_group("interaction_object"):
-		current_interaction_object = area
-		if not interaction_locked and area.has_method("show_prompt"):
-			area.show_prompt()
+		var target = area.get_parent()
+		current_interaction_object = target
+		if not interaction_locked and target.has_method("show_prompt"):
+			target.show_prompt()
 
 func _on_interaction_detector_area_exited(area: Area2D) -> void:
-	if area == current_interaction_object:
-		if area.has_method("hide_prompt"):
-			area.hide_prompt()
+	if area.get_parent() == current_interaction_object:
+		if current_interaction_object.has_method("hide_prompt"):
+			current_interaction_object.hide_prompt()
 		current_interaction_object = null

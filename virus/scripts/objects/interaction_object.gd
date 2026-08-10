@@ -1,23 +1,34 @@
-extends Area2D
+extends StaticBody2D
 
 # Base de qualquer coisa com que a personagem possa interagir (porta, botão,
-# quadro, etc). Só trata do que é comum a todos: o grupo, o label e
-# manter a dica dentro dos limites da câmara. Não decide se dá para
-# interagir mais que uma vez, isso fica para single_use_interactable.gd ou
-# repeatable_interactable.gd, que estendem isto.
+# quadro, etc). A raiz é um StaticBody2D para ser sólida por omissão — a
+# deteção de "a personagem está perto para interagir" fica num Area2D filho
+# (InteractionZone), porque só Area2D gera sinais de sobreposição com o
+# detetor da personagem. Não decide se dá para interagir mais que uma vez,
+# isso fica para single_use_interactable.gd ou repeatable_interactable.gd,
+# que estendem isto.
 
 @export var prompt_offset: Vector2 = Vector2(0, -64)
 @export var prompt_margin: Vector2 = Vector2(12, 12)
 
-@onready var interaction_label: Label = $InteractionLabel
+# Liga/desliga a colisão física deste objeto. Objetos decorativos (ex: um
+# quadro na parede, um item para apanhar do chão) podem pôr isto a false.
+@export var is_solid: bool = true
+
+@onready var interaction_zone: Area2D = $InteractionZone
+@onready var interaction_label: Label = $InteractionZone/InteractionLabel
+@onready var solid_collision: CollisionShape2D = $CollisionShape2D
 
 func _ready() -> void:
 	z_index = 0
-	add_to_group("interaction_object")
+	interaction_zone.add_to_group("interaction_object")
 	interaction_label.visible = false
 	interaction_label.top_level = true
 	interaction_label.z_as_relative = false
 	interaction_label.z_index = 1000
+
+	if solid_collision != null:
+		solid_collision.disabled = not is_solid
 
 func get_prompt_text() -> String:
 	return interaction_label.text

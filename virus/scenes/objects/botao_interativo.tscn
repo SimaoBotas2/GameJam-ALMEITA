@@ -6,10 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_button"]
 size = Vector2(120, 64)
 
-[node name="Interaction_Object" type="Area2D"]
+[node name="Interaction_Object" type="StaticBody2D"]
 z_index = 50
-collision_layer = 2
-collision_mask = 0
 script = ExtResource("2_script")
 used_texture = ExtResource("1_button")
 
@@ -21,7 +19,14 @@ z_index = 5
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("1_button")
 
-[node name="InteractionLabel" type="Label" parent="."]
+[node name="InteractionZone" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone"]
+shape = SubResource("RectangleShape2D_button")
+
+[node name="InteractionLabel" type="Label" parent="InteractionZone"]
 visible = false
 z_index = 1000
 z_as_relative = false

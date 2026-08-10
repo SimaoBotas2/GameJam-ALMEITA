@@ -43,15 +43,36 @@ Cuidado com o caminho: tem de ser o caminho completo a partir de res://scenes/le
 
 ## 4. Colocar um objeto interativo
 
-Objetos disponíveis em virus/scenes/objects/: caixa_vidros.tscn, botao_interativo.tscn, painting.tscn, etc. Todos seguem a mesma regra:
+Objetos disponíveis em virus/scenes/objects/: caixa_vidros.tscn, botao_interativo.tscn, painting.tscn, chest.tscn, book.tscn, scale.tscn, etc.
 
-- collision_layer a 2 e collision_mask a 0 — é isto que faz o detetor de interação da personagem (que tem collision_mask a 2) encontrar o objeto. Não mudes estes valores sem saber porquê.
-- Têm um InteractionLabel filho, com o texto do prompt (ex: "Press E to interact"). Não é criado por código nenhum, tem de estar na scene — a forma mais segura de garantir isto é duplicar uma scene de objeto já existente em vez de começar do zero.
+### Estrutura de um objeto
 
-Para criar um objeto novo, primeiro decide se é de uso único ou repetível:
+Todos seguem a mesma árvore de nós, pensada para serem sólidos por omissão (a personagem não os atravessa):
 
-- Uso único (porta, botão, caixa de vidros): estende single_use_interactable.gd. Depois do primeiro interact(), o objeto desliga-se sozinho e nunca mais reage.
-- Repetível (o quadro, algo que se possa voltar a usar): estende repeatable_interactable.gd. Bloqueia novas interações só enquanto a atual está a decorrer.
+```
+InteractableObject (StaticBody2D)   <- raiz, tem o script
+├── Sprite2D                        (visual do objeto)
+├── CollisionShape2D                <- hitbox física, bloqueia a personagem
+└── InteractionZone (Area2D)        <- zona de deteção de interação
+    ├── CollisionShape2D            (o tamanho a que dá para interagir, normalmente maior que a hitbox física)
+    └── InteractionLabel            (o texto do prompt, ex: "Press E to interact")
+```
+
+Isto existe porque um Area2D sozinho nunca bloqueia movimento no Godot — só deteta sobreposição. O StaticBody2D é que dá a colisão física; a Area2D filha é só para saber quando a personagem está perto o suficiente para interagir.
+
+- Na InteractionZone: collision_layer a 2 e collision_mask a 0 — é isto que faz o detetor de interação da personagem (que tem collision_mask a 2) encontrar o objeto. Não mudes estes valores sem saber porquê.
+- Não crie o InteractionLabel por código nenhum — tem de estar na scene, dentro da InteractionZone. A forma mais segura de garantir a estrutura toda certa é duplicar uma scene de objeto já existente em vez de começar do zero.
+
+### Ligar/desligar a colisão física
+
+O script (interaction_object.gd) tem um `@export var is_solid: bool = true`. Objetos decorativos que a personagem deve poder atravessar (ex: um quadro na parede, um item no chão antes de ser apanhado) só precisam de pôr `is_solid = false` no Inspector — não precisam de uma estrutura de nós diferente, a CollisionShape2D física fica lá desligada.
+
+### Uso único ou repetível
+
+Depois de a estrutura estar montada, decide se é de uso único ou repetível:
+
+- Uso único (porta, botão, caixa de vidros, itens para apanhar): estende single_use_interactable.gd. Depois do primeiro interact(), o objeto deixa de reagir a interações novas (a colisão física, se tiver, mantém-se).
+- Repetível (o quadro, o baú, algo que se possa voltar a usar): estende repeatable_interactable.gd. Bloqueia novas interações só enquanto a atual está a decorrer.
 
 Em ambos os casos só precisas de implementar o _on_interact():
 
@@ -67,7 +88,8 @@ Se for repetível e a interação demorar (ex: abrir um popup), avisa a base qua
 ## Checklist antes de dar como pronta
 
 - [ ] Sala tem Node2D root, background com z_index -50, paredes com colisão.
-- [ ] Personagem instanciada com has_chain correto para esta sala.
+- [ ] Personagem instanciada com has_chain/current_skin corretos para esta sala.
 - [ ] Portas com Next Scene Path a apontar para uma scene que existe mesmo (confirma no FileSystem).
-- [ ] Objetos interativos com collision_layer a 2 e collision_mask a 0.
+- [ ] Objetos interativos com a estrutura StaticBody2D + InteractionZone (Area2D), collision_layer a 2 e collision_mask a 0 na InteractionZone.
+- [ ] is_solid ajustado (true para objetos físicos, false para decoração/itens no chão).
 - [ ] Testar a sala sozinha (F6) antes de a ligar ao resto do jogo.

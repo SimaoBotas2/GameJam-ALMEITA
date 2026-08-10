@@ -1,19 +1,17 @@
-[gd_scene format=3 uid="uid://1d3sf0nu61mx"]
+[gd_scene format=3 uid="uid://dtsn026f1rces"]
 
-[ext_resource type="Script" uid="uid://cskifhjrjdq8m" path="res://scripts/objects/chest.gd" id="1_opa1x"]
+[ext_resource type="Script" path="res://scripts/objects/chest.gd" id="1_opa1x"]
 [ext_resource type="Texture2D" uid="uid://bxoxkkv0famim" path="res://assets/objects/chest/chest_idle.png" id="2_acra8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5s46"]
-size = Vector2(66, 65)
+size = Vector2(52, 49.5)
 
-[node name="Chest" type="Area2D" unique_id=1999036460]
+[node name="Chest" type="StaticBody2D" unique_id=1999036460]
 z_index = 50
-collision_layer = 2
-collision_mask = 0
 script = ExtResource("1_opa1x")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1272930995]
-position = Vector2(0, -0.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1272930996]
+position = Vector2(2, -1)
 shape = SubResource("RectangleShape2D_j5s46")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1394849454]
@@ -22,7 +20,15 @@ z_index = 5
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_acra8")
 
-[node name="InteractionLabel" type="Label" parent="." unique_id=1645445898]
+[node name="InteractionZone" type="Area2D" parent="." unique_id=1999036463]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone" unique_id=1272930995]
+position = Vector2(0, 2.75)
+shape = SubResource("RectangleShape2D_j5s46")
+
+[node name="InteractionLabel" type="Label" parent="InteractionZone" unique_id=1645445898]
 z_index = 1000
 z_as_relative = false
 offset_left = -70.0

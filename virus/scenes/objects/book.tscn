@@ -6,15 +6,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bxx4p"]
 size = Vector2(29.5, 19.000002)
 
-[node name="Book" type="Area2D" unique_id=646596214]
+[node name="Book" type="StaticBody2D" unique_id=646596214]
 position = Vector2(79, 38)
-collision_layer = 2
-collision_mask = 0
-monitoring = true
-monitorable = true
 script = ExtResource("1_07o31")
+is_solid = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=407631236]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=407631237]
+disabled = true
 position = Vector2(0, -0.5)
 scale = Vector2(1, 0.99999994)
 shape = SubResource("RectangleShape2D_bxx4p")
@@ -23,7 +21,18 @@ shape = SubResource("RectangleShape2D_bxx4p")
 scale = Vector2(0.083333276, 0.07214765)
 texture = ExtResource("2_ytm06")
 
-[node name="InteractionLabel" type="Label" parent="." unique_id=1960380088]
+[node name="InteractionZone" type="Area2D" parent="." unique_id=646596215]
+collision_layer = 2
+collision_mask = 0
+monitoring = true
+monitorable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone" unique_id=407631236]
+position = Vector2(0, -0.5)
+scale = Vector2(1, 0.99999994)
+shape = SubResource("RectangleShape2D_bxx4p")
+
+[node name="InteractionLabel" type="Label" parent="InteractionZone" unique_id=1960380088]
 visible = false
 z_index = 1000
 z_as_relative = false
