@@ -18,7 +18,7 @@ func interact() -> void:
 	is_busy = true
 	hide_prompt()
 
-	# implementa isto nas subclasses concretas (definido em interaction_object.gd)
+	# implementar isto nas subclasses concretas (definido em interaction_object.gd)
 	_on_interact()
 
 func finish_interaction() -> void:
