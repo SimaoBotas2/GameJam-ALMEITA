@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://ck77jjmh6cppu"]
 
+[ext_resource type="Script" uid="uid://bxc0adn6g0kbi" path="res://scripts/levels/room_1.gd" id="0_levelscript"]
 [ext_resource type="PackedScene" uid="uid://b0hyi8yeyucvj" path="res://scenes/character/sigma_character.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://dt4cwxs7edfeq" path="res://scenes/objects/door.tscn" id="2_g1qh7"]
 [ext_resource type="PackedScene" uid="uid://cwdicfw1npyc5" path="res://scenes/objects/painting.tscn" id="2_painting"]
-[ext_resource type="PackedScene" uid="uid://1d3sf0nu61mx" path="res://scenes/objects/chest.tscn" id="4_btv68"]
+[ext_resource type="PackedScene" uid="uid://dtsn026f1rces" path="res://scenes/objects/chest.tscn" id="4_btv68"]
 [ext_resource type="Texture2D" uid="uid://dgw7g5t5ssrfr" path="res://assets/objects/chest/chest_open.png" id="5_d4yrl"]
 
 [sub_resource type="Gradient" id="Gradient_bg"]
@@ -20,7 +21,73 @@ size = Vector2(1150, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_side"]
 size = Vector2(20, 642)
 
+[sub_resource type="Gradient" id="Gradient_red"]
+colors = PackedColorArray(0.906, 0.161, 0.161, 1, 0.906, 0.161, 0.161, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_red"]
+gradient = SubResource("Gradient_red")
+width = 58
+height = 82
+
+[sub_resource type="Gradient" id="Gradient_orange"]
+colors = PackedColorArray(0.933, 0.502, 0.11, 1, 0.933, 0.502, 0.11, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_orange"]
+gradient = SubResource("Gradient_orange")
+width = 58
+height = 82
+
+[sub_resource type="Gradient" id="Gradient_yellow"]
+colors = PackedColorArray(0.937, 0.831, 0.13, 1, 0.937, 0.831, 0.13, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yellow"]
+gradient = SubResource("Gradient_yellow")
+width = 58
+height = 82
+
+[sub_resource type="Gradient" id="Gradient_green"]
+colors = PackedColorArray(0.176, 0.702, 0.235, 1, 0.176, 0.702, 0.235, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_green"]
+gradient = SubResource("Gradient_green")
+width = 58
+height = 82
+
+[sub_resource type="Gradient" id="Gradient_blue"]
+colors = PackedColorArray(0.157, 0.4, 0.878, 1, 0.157, 0.4, 0.878, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_blue"]
+gradient = SubResource("Gradient_blue")
+width = 58
+height = 82
+
+[sub_resource type="Gradient" id="Gradient_indigo"]
+colors = PackedColorArray(0.294, 0.114, 0.541, 1, 0.294, 0.114, 0.541, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_indigo"]
+gradient = SubResource("Gradient_indigo")
+width = 58
+height = 82
+
+[sub_resource type="Gradient" id="Gradient_violet"]
+colors = PackedColorArray(0.58, 0.196, 0.827, 1, 0.58, 0.196, 0.827, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_violet"]
+gradient = SubResource("Gradient_violet")
+width = 58
+height = 82
+
 [node name="room_1" type="Node2D" unique_id=945382190]
+script = ExtResource("0_levelscript")
+painting_pool = {
+"placeholder_vermelho": SubResource("GradientTexture2D_red"),
+"placeholder_laranja": SubResource("GradientTexture2D_orange"),
+"placeholder_amarelo": SubResource("GradientTexture2D_yellow"),
+"placeholder_verde": SubResource("GradientTexture2D_green"),
+"placeholder_azul": SubResource("GradientTexture2D_blue"),
+"placeholder_roxo": SubResource("GradientTexture2D_indigo"),
+"placeholder_violeta": SubResource("GradientTexture2D_violet")
+}
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1103542364]
 z_index = -50

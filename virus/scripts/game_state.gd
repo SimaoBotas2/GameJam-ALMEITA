@@ -7,6 +7,7 @@ var chain_released: bool = false
 # (cada sala cria uma personagem nova, começaria sempre em "default" senão).
 var current_skin: String = "default"
 var inventory: Dictionary = {} #inventário do jogador (nome do item -> quantidade)
+var room_1_painting_ids: Array = [] # paintings sorteados para os quadros da room_1, guardados para não mudarem sempre que voltas à sala
 var music_player: AudioStreamPlayer
 
 func add_item(item_name: String, amount: int = 1) -> void:

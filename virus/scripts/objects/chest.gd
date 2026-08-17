@@ -11,6 +11,11 @@ const ChestInspectorScene = preload("res://scenes/ui/chest_inspector.tscn")
 
 @onready var is_chest_solved = false
 
+# Preenchido de fora (ex: room_1.gd), com o código certo calculado a partir
+# dos paintings sorteados nos quadros. Se ficar vazio, o chest_inspector usa
+# o código por omissão dele próprio.
+var expected_code: Array = []
+
 func show_prompt() -> void:
 	if not is_chest_solved:
 		super.show_prompt()
@@ -40,6 +45,8 @@ func _on_interact() -> void:
 		var player = get_tree().get_first_node_in_group("player")
 
 		var inspector = ChestInspectorScene.instantiate()
+		if not expected_code.is_empty():
+			inspector.chest_code = expected_code
 		get_tree().current_scene.add_child(inspector)
 		inspector.closed.connect(finish_interaction)
 		inspector.solved.connect(_on_chest_solved)
