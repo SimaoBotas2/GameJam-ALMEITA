@@ -2,6 +2,8 @@ extends Node
 
 const LOOP_MUSIC = preload("res://assets/sound/loop.wav")
 
+signal item_added(item_name: String, new_amount: int) # sinal emitido quando um item é adicionado ao inventário
+
 var chain_released: bool = false
 # Guarda a skin atual da personagem para não se perder ao mudar de sala
 # (cada sala cria uma personagem nova, começaria sempre em "default" senão).
@@ -17,6 +19,7 @@ func add_item(item_name: String, amount: int = 1) -> void:
 		inventory[item_name] += amount
 	else:
 		inventory[item_name] = amount
+	item_added.emit(item_name, inventory[item_name])
 
 func remove_item(item_name: String, amount: int = 1) -> bool:
 	if not inventory.has(item_name):
