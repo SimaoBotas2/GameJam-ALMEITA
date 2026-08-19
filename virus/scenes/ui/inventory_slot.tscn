@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://d2bncr020yxlu"]
+
+[ext_resource type="Script" uid="uid://4n7bcao2t23c" path="res://scripts/ui/inventory_slot.gd" id="1_slot_script"]
+
+[node name="inventory_slot" type="Control" unique_id=2065654517]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_slot_script")
+
+[node name="Background" type="Panel" parent="." unique_id=556940349]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="TextureRect" parent="Background" unique_id=1319299938]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Amount" type="Label" parent="Background" unique_id=841688934]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -21.0
+offset_right = 7.0
+offset_bottom = 2.0
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2

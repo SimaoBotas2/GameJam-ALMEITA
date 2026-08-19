@@ -7,7 +7,7 @@ func get_player() -> Node:
 
 func current_books() -> int:
 	var player = get_player()
-	return player.get_inventory_count("Book")
+	return player.get_inventory_count("book")
 
 func get_prompt_text() -> String:
 	var player = get_player()
@@ -15,7 +15,7 @@ func get_prompt_text() -> String:
 		return ""
 
 	if weight == 3:
-		var arm = player.get_inventory_count("Arm")
+		var arm = player.get_inventory_count("arm")
 		if arm > 0:
 			return "Press E to place the arm"
 		return ""
@@ -38,14 +38,14 @@ func _on_interact() -> void:
 		return
 
 	if weight == 3:
-		var arm = player.get_inventory_count("Arm")
+		var arm = player.get_inventory_count("arm")
 		if arm > 0:
-			player.remove_from_inventory("Arm", 1)
+			player.remove_from_inventory("arm", 1)
 			update_weight(4)
 	else:
 		var books_to_place := current_books()
 		if books_to_place > 0:
-			player.remove_from_inventory("Book", books_to_place)
+			player.remove_from_inventory("book", books_to_place)
 			update_weight(weight + books_to_place)
 
 	finish_interaction()

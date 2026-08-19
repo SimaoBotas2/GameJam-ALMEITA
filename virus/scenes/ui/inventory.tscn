@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cqray5x1xg6j8"]
+
+[ext_resource type="Script" uid="uid://31f4m62xwaqu" path="res://scripts/ui/inventory_hud.gd" id="1_inventory_hud_script"]
+
+[node name="Inventory" type="CanvasLayer" unique_id=1742065926]
+script = ExtResource("1_inventory_hud_script")
+
+[node name="BottomBar" type="PanelContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_bottom = 1.0
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = -79.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Margin" type="MarginContainer" parent="BottomBar" unique_id=1719386284]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BottomBar/Margin" unique_id=129895485]
+layout_mode = 2
+theme_override_constants/separation = 6

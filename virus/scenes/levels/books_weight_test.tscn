@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c5bn3xvlc0q07" path="res://scenes/objects/book.tscn" id="1_85nx6"]
 [ext_resource type="PackedScene" uid="uid://b0hyi8yeyucvj" path="res://scenes/character/sigma_character.tscn" id="2_bd6jh"]
 [ext_resource type="PackedScene" uid="uid://p7h7b02hv3pe" path="res://scenes/objects/scale.tscn" id="3_bd6jh"]
+[ext_resource type="PackedScene" uid="uid://cqray5x1xg6j8" path="res://scenes/ui/inventory.tscn" id="4_l4285"]
 
 [sub_resource type="Gradient" id="Gradient_bg"]
 colors = PackedColorArray(0.16, 0.15, 0.17, 1, 0.16, 0.15, 0.17, 1)
@@ -25,7 +26,7 @@ size = Vector2(20, 642)
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1957539023]
 z_index = -50
-position = Vector2(575, 321)
+position = Vector2(575, 314)
 texture = SubResource("GradientTexture2D_l4285")
 
 [node name="Book" parent="." unique_id=1040809727 instance=ExtResource("1_85nx6")]
@@ -68,3 +69,5 @@ has_chain = false
 
 [node name="scale" parent="." unique_id=186673162 instance=ExtResource("3_bd6jh")]
 position = Vector2(851, 359)
+
+[node name="Inventory" parent="." unique_id=1742065926 instance=ExtResource("4_l4285")]
