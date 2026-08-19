@@ -34,6 +34,12 @@ func _fit_sprite_to_box(sprite: Sprite2D, target_size: Vector2) -> void:
 	var scale_factor = min(target_size.x / texture_size.x, target_size.y / texture_size.y)
 	sprite.scale = Vector2(scale_factor, scale_factor)
 
+func apply_pool_texture(texture : Texture2D) -> void:
+	if canvas_sprite != null and texture != null:
+		canvas_sprite.texture = texture
+		_fit_sprite_to_box(canvas_sprite, canvas_display_size)
+
+
 func _on_interact() -> void:
 	var texture_to_show := closeup_texture
 	if texture_to_show == null and canvas_sprite != null and canvas_sprite.texture != null:
