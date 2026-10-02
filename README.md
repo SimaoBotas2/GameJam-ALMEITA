@@ -4,9 +4,6 @@ A 2D top-down puzzle game set in a hospital, made with [Godot](https://godotengi
 
 The game started as a game jam entry, and the goal now is to finish it as a complete game.
 
-<!-- TODO: add a GIF or screenshots (e.g. docs/screenshots/) -->
-<!-- TODO: add a link to the playable build (itch.io, GitHub Releases), if there is one -->
-
 ## Features
 
 - Top-down movement and an interaction system (doors, chests, books, paintings, scales, buttons)
@@ -42,7 +39,7 @@ The guides and notes in `docs/` are written in Portuguese.
 
 ## Tech Stack
 
-Godot 4 · GDScript <!-- TODO: confirm the exact Godot version (project.godot was saved with 4.7) -->
+Godot 4 · GDScript
 
 ## Getting Started
 
@@ -57,8 +54,6 @@ Godot 4 · GDScript <!-- TODO: confirm the exact Godot version (project.godot wa
 
 Hospital tileset: see [`virus/assets/tilesetHospital/license/license.txt`](virus/assets/tilesetHospital/license/license.txt).
 
-<!-- TODO: credit the authors of the music, sound effects and any other third-party asset -->
-
 ## Authors
 
-Simão Carvalho, Martim Fonseca, António Oliveira <!-- TODO: add the team name -->
+Simão Carvalho, Martim Fonseca, António Oliveira
