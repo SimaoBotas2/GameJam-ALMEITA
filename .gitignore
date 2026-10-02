@@ -2,3 +2,8 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# macOS and editor junk
+.DS_Store
+__MACOSX/
+*.tmp
